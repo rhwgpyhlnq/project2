@@ -19,6 +19,7 @@ builder:
           authenticationType: reentranceTicket # SAML support for vscode
         app:
           name: ZSHIPMENT
+          description: SHIPMENT_REPORT
           package: ZSHIPMENT
           transport: ''
         exclude:
