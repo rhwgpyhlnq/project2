@@ -58,3 +58,20 @@ npm run build
 
 验证覆盖同日合并、同周不同日期分开、客户/供应商独立筛选、多单位隔离、缺记录与零区别、精确小数、分页、失败清理和参数化日期路径。
 本机用隔离的测试数据服务验证了真实 SAPUI5 渲染、三客户列、客户筛选、工厂值帮助和实际 Excel 下载；该测试服务不随项目提交。S/4 认证及真实单据结果仍需在 BAS Destination 下联调。
+
+## 正式 Launchpad 入口与 IAM App
+
+manifest.json 已补充 sap.app.crossNavigation.inbounds["project2-display"]，导航意图为 project2-display，保持现有 BAS 预览意图一致，应用 ID 仍为 project2。应用版本更新到 0.0.2。
+
+如果 ADT 中只有 BSP 应用 ZSHIPMENT，却在 IAM App 的 Fiori Launchpad App Descr Item ID 搜索帮助中查不到入口：
+1. 在 BAS 拉取本次配置，运行 npm run deploy，重新部署到现有 ZSHIPMENT BSP 应用及 ZSHIPMENT 包。
+2. 确认部署结束成功，再刷新 ADT 的 ZSHIPMENT 包，寻找生成的 Launchpad App Descriptor Item（UIAD）。
+3. 在 IAM App 的搜索帮助中选择该 UIAD 的实际技术名称。不要将 BSP 名称、sap.app.id 或 inbound 键值当作必然相同的技术名称填写。
+4. 保存并 Publish Locally IAM App，继续将 IAM App 分配到 Business Catalog，并发布；最终的角色及页面分配由有权限的管理员完成。
+
+修改文件或只运行 npm start 不会在 ABAP 后端创建 UIAD；必须重新部署。本次修改没有替用户部署到 S/4，也没有修改 IAM 或角色权限。
+
+参考：
+- https://help.sap.com/docs/bas/developing-sap-fiori-app-in-sap-business-application-studio/sap-fiori-launchpad-configuration
+- https://help.sap.com/docs/ABAP_PLATFORM_NEW/b5670aaaa2364a29935f40b16499972d/2f4b3efeefaf4dcb87bcf5aa32863a74.html
+
