@@ -1,6 +1,73 @@
 <mvc:View controllerName="project2.controller.shipment"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
+    xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout">
+    <Page id="page" title="{i18n>title}" class="shipmentPage" busy="{state>/busy}" busyIndicatorDelay="0">
+        <headerContent><ObjectStatus text="每日汇总" state="Information" icon="sap-icon://calendar" /></headerContent>
+        <content>
+            <VBox class="shipmentContent">
+                <Panel headerText="查询条件" expandable="true" expanded="true" class="filterPanel">
+                    <l:Grid defaultSpan="XL2 L3 M6 S12" hSpacing="1" vSpacing="1">
+                        <VBox><Label text="工厂" required="true" labelFor="plant" />
+                            <Input id="plant" value="{filters>/plant}" showValueHelp="true" valueHelpRequest=".onValueHelp" maxLength="4" /></VBox>
+                        <VBox><Label text="ECU 物料" required="true" labelFor="material" />
+                            <Input id="material" value="{filters>/material}" showValueHelp="true" valueHelpRequest=".onValueHelp" /></VBox>
+                        <VBox><Label text="查询开始日期" required="true" labelFor="dateFrom" />
+                            <DatePicker id="dateFrom" value="{filters>/dateFrom}" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" width="100%" /></VBox>
+                        <VBox><Label text="查询结束日期" required="true" labelFor="dateTo" />
+                            <DatePicker id="dateTo" value="{filters>/dateTo}" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" width="100%" /></VBox>
+                        <VBox><Label text="采购发布创建起始日期" required="true" labelFor="releaseFrom" />
+                            <DatePicker id="releaseFrom" value="{filters>/releaseFrom}" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" width="100%" /></VBox>
+                        <VBox><Label text="周分类基准日期" required="true" labelFor="referenceDate" />
+                            <DatePicker id="referenceDate" value="{filters>/referenceDate}" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" width="100%" /></VBox>
+                        <VBox><Label text="供应商" labelFor="supplier" />
+                            <Input id="supplier" value="{filters>/supplier}" placeholder="留空表示全部" /></VBox>
+                        <VBox><layoutData><l:GridData span="XL4 L6 M6 S12" /></layoutData>
+                            <Label text="客户编码（多选）" labelFor="customers" />
+                            <Input id="customers" value="{filters>/customers}" placeholder="多个编码以逗号分隔；留空表示全部" /></VBox>
+                    </l:Grid>
+                    <OverflowToolbar design="Transparent">
+                        <Text text="同周不同日期仍分别展示；不同单位分别合计。" />
+                        <ToolbarSpacer />
+                        <Button text="应用客户 / 供应商" type="Transparent" press=".onApplyPartners" enabled="{state>/loaded}" />
+                        <Button text="查询" type="Emphasized" icon="sap-icon://search" press=".onQuery" />
+                    </OverflowToolbar>
+                </Panel>
+                <MessageStrip text="本版展示原始计划，尚未扣减已收货／已发货；已发货合计仅覆盖查询日期范围。客户名称和 FS 的不限日期累计、已确定／预估指标尚未提供。"
+                    type="Information" showIcon="true" class="scopeMessage" />
+                <MessageStrip text="{state>/warning}" type="Warning" showIcon="true" visible="{= !!${state>/warning} }" class="scopeMessage" />
+                <Toolbar design="Transparent" class="sectionToolbar">
+                    <Title text="销售数量概览" level="H3" />
+                    <Text text="按客户与单位分别合计" class="sapUiSmallMarginBegin" />
+                    <ToolbarSpacer /><Text text="{state>/queryText}" />
+                </Toolbar>
+                <FlexBox wrap="Wrap" items="{report>/summaries}" class="summaryCards">
+                    <items>
+                        <VBox class="summaryCard">
+                            <HBox justifyContent="SpaceBetween" alignItems="Center">
+                                <Title text="{report>partner}" level="H4" /><ObjectStatus text="{report>unit}" state="Information" />
+                            </HBox>
+                            <HBox justifyContent="SpaceBetween"><Text text="已发货 · 查询区间" /><ObjectNumber number="{path:'report>actual', formatter:'.formatQuantity'}" /></HBox>
+                            <HBox justifyContent="SpaceBetween"><Text text="原始计划 · 本周及下周" /><Text text="{path:'report>nearPlan', formatter:'.formatQuantity'}" class="summaryValue" /></HBox>
+                            <HBox justifyContent="SpaceBetween"><Text text="原始计划 · 两周以后" /><Text text="{path:'report>laterPlan', formatter:'.formatQuantity'}" class="summaryValue" /></HBox>
+                        </VBox>
+                    </items>
+                </FlexBox>
+                <Panel class="matrixPanel">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <Title text="{state>/tableTitle}" level="H3" />
+                            <Text text="{state>/resultText}" />
+                            <ToolbarSpacer />
+                            <Button text="导出 Excel" icon="sap-icon://excel-attachment" press=".onExport" enabled="{state>/loaded}" />
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <VBox id="matrixHost" />
+                    <Toolbar design="Transparent">
+                        <Text text="{state>/supplierText}" />
+                        <ToolbarSpacer />
+                        <Text text="数量空白表示无记录，0 表示实际返回零。" />
+                    </Toolbar>
+                </Panel>
+            </VBox>
+        </content>
     </Page>
 </mvc:View>

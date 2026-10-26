@@ -30,7 +30,8 @@
     "start-variants-management": "fiori run --open \"/preview.html?sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#project2-display\"",
     "unit-test": "fiori run --config ./ui5-mock.yaml --open \"test/unit/unitTests.qunit.html\"",
     "undeploy": "npm run build && fiori undeploy --config ui5-deploy.yaml",
-    "deploy-test": "npm run build && fiori deploy --config ui5-deploy.yaml --testMode true"
+    "deploy-test": "npm run build && fiori deploy --config ui5-deploy.yaml --testMode true",
+    "test:report": "node --test test/report.test.cjs"
   },
   "sapuxLayer": "CUSTOMER_BASE"
 }

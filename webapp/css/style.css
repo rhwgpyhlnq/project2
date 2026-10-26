@@ -1,1 +1,16 @@
-/* Enter your custom styles here */
+.shipmentPage { background: #f5f6f7; }
+.shipmentContent { padding: 1rem 1.5rem 2rem; gap: .75rem; }
+.filterPanel, .matrixPanel { border-radius: .6rem; background: var(--sapGroup_ContentBackground); }
+.filterPanel .sapMPanelContent { padding-bottom: .25rem; }
+.filterPanel .sapMLabel { margin-bottom: .25rem; }
+.scopeMessage { border-radius: .4rem; }
+.sectionToolbar { margin-top: .2rem; }
+.summaryCards { gap: .75rem; }
+.summaryCard { box-sizing: border-box; width: 20rem; padding: 1rem 1.2rem; border: 1px solid var(--sapGroup_ContentBorderColor);
+    border-top: 3px solid #0070b1; border-radius: .6rem; background: var(--sapGroup_ContentBackground); gap: .65rem; }
+.summaryCard .sapMText { font-size: .8rem; }
+.summaryValue { font-weight: 600; font-variant-numeric: tabular-nums; }
+.matrixPanel .sapMPanelContent { padding: 0; overflow: hidden; }
+.shipmentTable .sapUiTableColHdrCnt { background: #edf4f8; }
+.shipmentTable .sapUiTableCell .sapMText { font-variant-numeric: tabular-nums; }
+@media (max-width: 700px) { .shipmentContent { padding: .5rem; } .summaryCard { width: 100%; } }
