@@ -2,7 +2,7 @@
 QUnit.config.autostart = false;
 
 sap.ui.require([
-    "project2/test/unit/AllTests"
+    "SHIPMENT_REPORT/test/unit/AllTests"
 ], function () {
     "use strict";
 

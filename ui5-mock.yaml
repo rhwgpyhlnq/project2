@@ -2,7 +2,7 @@
 
 specVersion: "4.0"
 metadata:
-  name: project2
+  name: shipment-report
 type: application
 server:
   customMiddleware:
@@ -33,7 +33,7 @@ server:
           theme: sap_horizon
           path: test/flpSandbox.html
           intent:
-            object: project2
+            object: SHIPMENT_REPORT
             action: display
     - name: sap-fe-mockserver
       beforeMiddleware: csp

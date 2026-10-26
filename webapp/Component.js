@@ -1,10 +1,10 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
-    "project2/model/models"
+    "SHIPMENT_REPORT/model/models"
 ], (UIComponent, models) => {
     "use strict";
 
-    return UIComponent.extend("project2.Component", {
+    return UIComponent.extend("SHIPMENT_REPORT.Component", {
         metadata: {
             manifest: "json",
             interfaces: [

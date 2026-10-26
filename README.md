@@ -61,7 +61,9 @@ npm run build
 
 ## 正式 Launchpad 入口与 IAM App
 
-manifest.json 已补充 sap.app.crossNavigation.inbounds["project2-display"]，导航意图为 project2-display，保持现有 BAS 预览意图一致，应用 ID 仍为 project2。应用版本更新到 0.0.2。
+应用 ID、UI5 代码命名空间和 Launchpad 语义对象统一为 SHIPMENT_REPORT；manifest.json 的 inbound 为 SHIPMENT_REPORT-display，导航意图为 #SHIPMENT_REPORT-display。应用版本为 0.0.3。组件、视图、控制器、资源路径、预览入口及测试引用已同步调整，必须更新完整项目，不能只替换 manifest.json。
+
+GitHub 仓库及 BAS 文件夹仍为 project2；npm 包名采用 shipment-report。部署目标仍为现有 BSP ZSHIPMENT、包 ZSHIPMENT，不创建另一个 BSP。
 
 如果 ADT 中只有 BSP 应用 ZSHIPMENT，却在 IAM App 的 Fiori Launchpad App Descr Item ID 搜索帮助中查不到入口：
 1. 在 BAS 拉取本次配置，运行 npm run deploy，重新部署到现有 ZSHIPMENT BSP 应用及 ZSHIPMENT 包。

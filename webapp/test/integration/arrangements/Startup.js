@@ -14,7 +14,7 @@ sap.ui.define([
 			// start the app UI component
 			this.iStartMyUIComponent({
 				componentConfig: {
-					name: "project2",
+					name: "SHIPMENT_REPORT",
 					async: true
 				},
 				hash: oOptions.hash,

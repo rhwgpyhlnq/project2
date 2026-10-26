@@ -1,4 +1,4 @@
-<mvc:View controllerName="project2.controller.App"
+<mvc:View controllerName="SHIPMENT_REPORT.controller.App"
     displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">

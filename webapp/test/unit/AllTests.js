@@ -1,5 +1,5 @@
 sap.ui.define([
-	"project2/test/unit/controller/shipment.controller"
+	"SHIPMENT_REPORT/test/unit/controller/shipment.controller"
 ], function () {
 	"use strict";
 });

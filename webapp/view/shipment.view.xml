@@ -1,4 +1,4 @@
-<mvc:View controllerName="project2.controller.shipment"
+<mvc:View controllerName="SHIPMENT_REPORT.controller.shipment"
     xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout">
     <Page id="page" title="{i18n>title}" class="shipmentPage" busy="{state>/busy}" busyIndicatorDelay="0">
         <headerContent><ObjectStatus text="每日汇总" state="Information" icon="sap-icon://calendar" /></headerContent>

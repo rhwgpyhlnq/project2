@@ -1,7 +1,7 @@
 {
   "_version": "1.86.0",
   "sap.app": {
-    "id": "project2",
+    "id": "SHIPMENT_REPORT",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -28,8 +28,8 @@
     },
     "crossNavigation": {
       "inbounds": {
-        "project2-display": {
-          "semanticObject": "project2",
+        "SHIPMENT_REPORT-display": {
+          "semanticObject": "SHIPMENT_REPORT",
           "action": "display",
           "title": "{{appTitle}}",
           "subTitle": "{{appSubtitle}}",
@@ -78,7 +78,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "project2.i18n.i18n",
+          "bundleName": "SHIPMENT_REPORT.i18n.i18n",
           "supportedLocales": [
             ""
           ],
@@ -110,9 +110,9 @@
         "transition": "slide",
         "type": "View",
         "viewType": "XML",
-        "path": "project2.view",
+        "path": "SHIPMENT_REPORT.view",
         "async": true,
-        "viewPath": "project2.view"
+        "viewPath": "SHIPMENT_REPORT.view"
       },
       "routes": [
         {
@@ -131,7 +131,7 @@
       }
     },
     "rootView": {
-      "viewName": "project2.view.App",
+      "viewName": "SHIPMENT_REPORT.view.App",
       "type": "XML",
       "id": "App",
       "async": true

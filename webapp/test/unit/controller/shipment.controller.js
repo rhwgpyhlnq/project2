@@ -1,5 +1,5 @@
 /*global QUnit*/
-sap.ui.define(["project2/controller/shipment.controller"], function (Controller) {
+sap.ui.define(["SHIPMENT_REPORT/controller/shipment.controller"], function (Controller) {
     "use strict";
     QUnit.module("shipment Controller");
     QUnit.test("quantities preserve zero and distinguish missing values", function (assert) {

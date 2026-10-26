@@ -2,7 +2,7 @@
 
 specVersion: "4.0"
 metadata:
-  name: project2
+  name: shipment-report
 type: application
 framework:
   name: SAPUI5
@@ -30,7 +30,7 @@ server:
           theme: sap_horizon
           path: test/flpSandbox.html
           intent:
-            object: project2
+            object: SHIPMENT_REPORT
             action: display
     - name: fiori-tools-proxy
       afterMiddleware: compression

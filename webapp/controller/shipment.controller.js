@@ -4,12 +4,12 @@ sap.ui.define([
     "sap/ui/table/Table", "sap/ui/table/Column", "sap/ui/table/rowmodes/Fixed",
     "sap/ui/export/Spreadsheet", "sap/m/SelectDialog", "sap/m/StandardListItem",
     "sap/ui/model/Filter", "sap/ui/model/FilterOperator", "sap/ui/model/Sorter",
-    "project2/model/ReportBuilder", "project2/model/ReportService"
+    "SHIPMENT_REPORT/model/ReportBuilder", "SHIPMENT_REPORT/model/ReportService"
 ], function (Controller, JSONModel, MessageBox, MessageToast, Label, Text, ObjectStatus,
     Table, Column, Fixed, Spreadsheet, SelectDialog, StandardListItem, Filter, FilterOperator,
     Sorter, ReportBuilder, ReportService) {
     "use strict";
-    return Controller.extend("project2.controller.shipment", {
+    return Controller.extend("SHIPMENT_REPORT.controller.shipment", {
         onInit: function () {
             const now = new Date();
             const today = [now.getFullYear(), String(now.getMonth() + 1).padStart(2, "0"), String(now.getDate()).padStart(2, "0")].join("-");

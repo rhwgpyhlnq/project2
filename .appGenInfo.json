@@ -5,7 +5,7 @@
     "serviceType": "SAP System (ABAP On-Premise)",
     "metadataFilename": "",
     "serviceUrl": "https://my200292.s4hana.sapcloud.cn/sap/opu/odata4/sap/zsb_shipment_report/srvd/sap/zui_shipment_report/0001/",
-    "appName": "project2",
+    "appName": "SHIPMENT_REPORT",
     "appTitle": "App Title",
     "appDescription": "An SAP Fiori application.",
     "appNamespace": "",

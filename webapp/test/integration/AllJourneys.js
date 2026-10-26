@@ -7,7 +7,7 @@ sap.ui.define([
 
 	Opa5.extendConfig({
 		arrangements: new Startup(),
-		viewNamespace: "project2.view.",
+		viewNamespace: "SHIPMENT_REPORT.view.",
 		autoWait: true
 	});
 });
