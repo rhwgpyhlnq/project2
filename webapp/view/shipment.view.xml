@@ -30,8 +30,6 @@
                         <Button press=".onQuery" text="查询" type="Emphasized" icon="sap-icon://search" />
                     </OverflowToolbar>
                 </Panel>
-                <MessageStrip text="本版展示原始计划，尚未扣减已收货／已发货；已发货合计仅覆盖查询日期范围。客户名称和 FS 的不限日期累计、已确定／预估指标尚未提供。"
-                    type="Information" showIcon="true" class="scopeMessage" />
                 <MessageStrip text="{state>/warning}" type="Warning" showIcon="true" visible="{= !!${state>/warning} }" class="scopeMessage" />
                 <Toolbar design="Transparent" class="sectionToolbar">
                     <Title text="销售数量概览" level="H3" />
