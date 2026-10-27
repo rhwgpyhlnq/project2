@@ -2,11 +2,13 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap/m/MessageBox",
     "sap/m/MessageToast", "sap/m/Label", "sap/m/Text", "sap/m/ObjectStatus",
     "sap/ui/table/Table", "sap/ui/table/Column", "sap/ui/table/rowmodes/Fixed",
-    "sap/ui/export/Spreadsheet", "sap/m/SelectDialog", "sap/m/StandardListItem",
+    "sap/ui/export/Spreadsheet", "sap/m/Dialog", "sap/m/Table", "sap/m/Column", "sap/m/ColumnListItem",
+    "sap/m/Button", "sap/m/SearchField", "sap/m/VBox",
     "sap/ui/model/Filter", "sap/ui/model/FilterOperator", "sap/ui/model/Sorter",
     "SHIPMENT_REPORT/model/ReportBuilder", "SHIPMENT_REPORT/model/ReportService"
 ], function (Controller, JSONModel, MessageBox, MessageToast, Label, Text, ObjectStatus,
-    Table, Column, Fixed, Spreadsheet, SelectDialog, StandardListItem, Filter, FilterOperator,
+    Table, Column, Fixed, Spreadsheet, Dialog, HelpTable, HelpColumn, ColumnListItem,
+    Button, SearchField, VBox, Filter, FilterOperator,
     Sorter, ReportBuilder, ReportService) {
     "use strict";
     return Controller.extend("SHIPMENT_REPORT.controller.shipment", {
@@ -15,7 +17,7 @@ sap.ui.define([
             const today = [now.getFullYear(), String(now.getMonth() + 1).padStart(2, "0"), String(now.getDate()).padStart(2, "0")].join("-");
             const start = ReportBuilder.monday(today);
             this.getView().setModel(new JSONModel({
-                plant: "1310", material: "PECU001", supplier: "", customers: "",
+                plant: "1310", materials: [{ key: "PECU001", text: "PECU001" }], suppliers: [], customers: [],
                 dateFrom: start, dateTo: ReportBuilder.plusDays(start, 27),
                 releaseFrom: today.slice(0, 4) + "-01-01", referenceDate: today
             }), "filters");
@@ -40,8 +42,10 @@ sap.ui.define([
         _validateFilters: function () {
             const f = Object.assign({}, this.getView().getModel("filters").getData());
             f.plant = f.plant.trim();
-            f.material = f.material.trim();
-            if (!f.plant || !f.material) { throw new Error("请输入工厂和单个物料。"); }
+            ["material", "supplier", "customers"].forEach(id => this._commitSelectionInput(this.byId(id)));
+            const selections = this.getView().getModel("filters");
+            ["materials", "suppliers", "customers"].forEach(field => { f[field] = selections.getProperty("/" + field).map(item => item.key); });
+            if (!f.plant || !f.materials.length) { throw new Error("请输入工厂，并选择至少一个物料。"); }
             ["dateFrom", "dateTo", "releaseFrom", "referenceDate"].forEach(key => {
                 const control = this.byId(key);
                 if (!control.getDateValue() || !/^\d{4}-\d{2}-\d{2}$/.test(f[key])) {
@@ -73,7 +77,7 @@ sap.ui.define([
                 this._purchases = results[0];
                 this._sales = results[1];
                 this._apply(filters);
-                state.setProperty("/queryText", filters.plant + " / " + filters.material + " · " + filters.dateFrom + " 至 " + filters.dateTo);
+                state.setProperty("/queryText", filters.plant + " / " + filters.materials.join("、") + " · " + filters.dateFrom + " 至 " + filters.dateTo);
                 state.setProperty("/queriedAt", new Date().toLocaleTimeString());
                 state.setProperty("/loaded", true);
             } catch (error) {
@@ -89,18 +93,8 @@ sap.ui.define([
             this._createTable(result.customers);
             const state = this.getView().getModel("state");
             state.setProperty("/resultText", result.rows.length + " 个日期/单位组合 · " + result.customers.length + " 个客户");
-            state.setProperty("/supplierText", filters.supplier ? "供应商：" + filters.supplier : "采购按所选单位合计全部供应商");
+            state.setProperty("/supplierText", filters.suppliers.length ? "供应商：" + filters.suppliers.join("、") : "采购按所选单位合计全部供应商");
             state.setProperty("/warning", result.missingWeeks ? "部分业务日期没有年周，请同步后端日历映射版本。" : "");
-        },
-        onApplyPartners: function () {
-            if (!this.getView().getModel("state").getProperty("/loaded")) { MessageToast.show("请先执行查询。"); return; }
-            try {
-                const filters = this._validateFilters();
-                if (["plant", "material", "dateFrom", "dateTo", "releaseFrom"].some(key => filters[key] !== this._queryFilters[key])) {
-                    throw new Error("查询条件已更改，请点击查询以刷新数据。");
-                }
-                this._apply(filters);
-            } catch (error) { MessageBox.error(error.message); }
         },
         _createTable: function (customers) {
             if (this._table) { this.byId("matrixHost").removeItem(this._table); this._table.destroy(); }
@@ -189,33 +183,98 @@ sap.ui.define([
             try { await spreadsheet.build(); } catch (error) { MessageBox.error("导出失败：" + error.message); }
             finally { spreadsheet.destroy(); }
         },
-        onValueHelp: function (event) {
-            const plant = event.getSource().getId().endsWith("--plant");
-            const config = plant ? { path: "/PlantValueHelp", key: "Plant", text: "PlantName", filter: "plant", title: "选择工厂" } :
-                { path: "/ProductValueHelp", key: "Product", text: "Product_Text", filter: "material", title: "选择物料" };
-            const dialog = new SelectDialog({
-                title: config.title, growingThreshold: 50,
-                search: function (e) {
-                    const value = e.getParameter("value");
-                    e.getSource().getBinding("items").filter(value ? new Filter({
-                        filters: [new Filter(config.key, FilterOperator.Contains, value), new Filter(config.text, FilterOperator.Contains, value)], and: false
-                    }) : []);
-                },
-                confirm: e => {
-                    const item = e.getParameter("selectedItem");
-                    if (item) { this.getView().getModel("filters").setProperty("/" + config.filter, item.getBindingContext().getProperty(config.key)); }
-                    dialog.destroy();
-                },
-                cancel: function () { dialog.destroy(); }
+        _selectionConfig: function (input) {
+            return {
+                plant: { path: "/PlantValueHelp", key: "Plant", text: "PlantName", field: "plant", title: "选择工厂", single: true },
+                material: { path: "/ProductValueHelp", key: "Product", text: "Product_Text", field: "materials", title: "选择物料", length: 40 },
+                supplier: { path: "/SupplierValueHelp", key: "Supplier", text: "SupplierName", field: "suppliers", title: "选择供应商", length: 10 },
+                customers: { path: "/CustomerValueHelp", key: "Customer", text: "CustomerName", field: "customers", title: "选择客户", length: 10 }
+            }[input.getId().split("--").pop()];
+        },
+        _commitSelectionInput: function (input) {
+            const value = input.getValue().trim();
+            if (!value) { return; }
+            const config = this._selectionConfig(input);
+            const codes = Array.from(new Set(value.split(/[,，;；\s]+/).filter(Boolean)));
+            if (codes.some(code => code.length > config.length)) { throw new Error(config.title.slice(2) + "编码过长，请使用搜索帮助选择。"); }
+            const model = this.getView().getModel("filters");
+            const selected = new Map(model.getProperty("/" + config.field).map(item => [item.key, item]));
+            codes.forEach(code => {
+                const key = config.length === 10 && /^\d+$/.test(code) ? code.padStart(10, "0") : code;
+                if (!selected.has(key)) { selected.set(key, { key: key, text: key }); }
             });
-            dialog.setModel(this.getOwnerComponent().getModel());
-            dialog.bindAggregation("items", {
-                path: config.path, parameters: { $$groupId: "$direct" },
-                template: new StandardListItem({ title: "{" + config.key + "}", description: "{" + config.text + "}" })
+            model.setProperty("/" + config.field, Array.from(selected.values()));
+            input.setValue("");
+            input.setValueState("None");
+        },
+        onSelectionInputChange: function (event) {
+            try { this._commitSelectionInput(event.getSource()); }
+            catch (error) { event.getSource().setValueState("Error"); MessageBox.error(error.message); }
+        },
+        onTokenUpdate: function (event) {
+            if (event.getParameter("type") !== "removed") { return; }
+            const config = this._selectionConfig(event.getSource());
+            const removed = new Set(event.getParameter("removedTokens").map(token => token.getKey()));
+            const model = this.getView().getModel("filters");
+            event.preventDefault();
+            model.setProperty("/" + config.field, model.getProperty("/" + config.field).filter(item => !removed.has(item.key)));
+        },
+        onValueHelp: function (event) {
+            const input = event.getSource();
+            const config = this._selectionConfig(input);
+            if (!config.single) {
+                try { this._commitSelectionInput(input); } catch (error) { MessageBox.error(error.message); return; }
+            }
+            const model = this.getView().getModel("filters");
+            const staged = new Map(config.single ? [] : model.getProperty("/" + config.field).map(item => [item.key, item]));
+            const table = new HelpTable({
+                mode: config.single ? "SingleSelectLeft" : "MultiSelect", includeItemInSelection: true, growing: true, growingThreshold: 50,
+                rememberSelections: false, busyIndicatorDelay: 0, noDataText: "没有匹配记录，请调整搜索条件。",
+                columns: [new HelpColumn({ header: new Label({ text: "编码" }), width: "12rem" }),
+                    new HelpColumn({ header: new Label({ text: "名称" }) })],
+                selectionChange: e => {
+                    if (config.single) { staged.clear(); }
+                    e.getParameter("listItems").forEach(item => {
+                        const context = item.getBindingContext();
+                        const key = context.getProperty(config.key);
+                        const description = context.getProperty(config.text);
+                        if (e.getParameter("selected")) { staged.set(key, { key: key, text: description ? description + " (" + key + ")" : key }); }
+                        else { staged.delete(key); }
+                    });
+                },
+                updateFinished: () => {
+                    table.getItems().forEach(item => {
+                        const context = item.getBindingContext();
+                        if (context) { table.setSelectedItem(item, staged.has(context.getProperty(config.key))); }
+                    });
+                }
+            });
+            table.setModel(this.getOwnerComponent().getModel());
+            table.bindItems({ path: config.path,
+                parameters: { $$groupId: "$direct", $select: config.key + "," + config.text, $orderby: config.key },
+                template: new ColumnListItem({ cells: [new Text({ text: "{" + config.key + "}" }), new Text({ text: "{" + config.text + "}" })] })
+            });
+            const search = new SearchField({ placeholder: "输入编码或名称，按回车搜索", search: e => {
+                const value = e.getParameter("query").trim();
+                table.getBinding("items").filter(value ? new Filter({ filters: [
+                    new Filter(config.key, FilterOperator.Contains, value), new Filter(config.text, FilterOperator.Contains, value)
+                ], and: false }) : []);
+            } });
+            const dialog = new Dialog({
+                title: config.title + (config.single ? "" : "（可多选）"), contentWidth: "44rem", contentHeight: "28rem", resizable: true, draggable: true,
+                content: [new VBox({ items: [search, table] })],
+                beginButton: new Button({ text: "确定", type: "Emphasized", press: () => {
+                    if (config.single) { const first = staged.values().next().value; if (first) { model.setProperty("/plant", first.key); } }
+                    else { model.setProperty("/" + config.field, Array.from(staged.values())); }
+                    dialog.close();
+                } }),
+                endButton: new Button({ text: "取消", press: () => dialog.close() }),
+                afterClose: () => { this._helpDialog = null; dialog.destroy(); }
             });
             this.getView().addDependent(dialog);
+            this._helpDialog = dialog;
             dialog.open();
         },
-        onExit: function () { if (this._table) { this._table.destroy(); } }
+        onExit: function () { if (this._helpDialog) { this._helpDialog.destroy(); } if (this._table) { this._table.destroy(); } }
     });
 });

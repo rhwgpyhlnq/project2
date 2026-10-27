@@ -19,10 +19,13 @@ npm start
 
 如 git status 显示你自己的源码修改，先保存或提交再 pull，不要 reset --hard。
 单独预览页面可用 npm run start-noflp。先确认 BAS 的 btp292 Destination 能访问当前 Service Binding。
-查询条件必须填写工厂、单个物料、开始/结束日期、采购发布创建起始日期。默认工厂 1310、物料 PECU001 仅为方便现有测试，可直接修改。日期默认本周一到未来四周，查询跨度不超过 366 天。
+查询条件必须填写工厂、至少一个物料、开始/结束日期、采购发布创建起始日期。默认工厂 1310、物料 PECU001 仅为方便现有测试，可直接修改。日期默认本周一到未来四周，查询跨度不超过 366 天。
 周分类基准日期默认打开页面当天，用它确定“历史 / 本周 / 下周 / 两周以后”；不会改变日汇总粒度。
-供应商可留空；客户编码可留空或输入多个，以逗号、分号或空格分隔。编码比较允许省略前导零。点击“应用客户 / 供应商”在完整已加载结果上重新筛选；修改工厂、物料或查询日期后应重新点击“查询”。
-工厂、物料使用已暴露的 PlantValueHelp、ProductValueHelp 搜索帮助。供应商及客户暂以编码输入，未假设服务提供了对应值帮助或名称。
+物料、供应商、客户均使用 MultiInput 多选标签和 F4 搜索帮助；弹窗按编码或名称搜索，勾选后点击确定，取消不改变已选项。搜索或翻页不会丢失已选编码，也可以删除标签、直接输入多个编码（逗号、分号或空格分隔）。供应商和客户的纯数字手输编码补齐至 10 位；搜索帮助返回的编码保留前导零。工厂保持单选。
+
+物料至少选一个，供应商/客户留空表示全部。修改条件后统一点击“查询”，将多值条件直接传给后端，不再提供仅筛选缓存的“应用客户 / 供应商”按钮。采购只传供应商，销售只传客户；同字段多个值以 OR 组合，不同字段以 AND 组合。
+
+搜索帮助使用 PlantValueHelp、ProductValueHelp、SupplierValueHelp、CustomerValueHelp；后端必须同步 ZSHIPMENT 最新服务，移除 p_material 参数并暴露客户/供应商值帮助。物料通过 $filter=Material eq ... 传入，服务路径不再包含 p_material。
 
 ## 页面布局与 FS 的对应
 
@@ -61,7 +64,7 @@ npm run build
 
 ## 正式 Launchpad 入口与 IAM App
 
-应用 ID、UI5 代码命名空间和 Launchpad 语义对象统一为 SHIPMENT_REPORT；manifest.json 的 inbound 为 SHIPMENT_REPORT-display，导航意图为 #SHIPMENT_REPORT-display。应用版本为 0.0.3。组件、视图、控制器、资源路径、预览入口及测试引用已同步调整，必须更新完整项目，不能只替换 manifest.json。
+应用 ID、UI5 代码命名空间和 Launchpad 语义对象统一为 SHIPMENT_REPORT；manifest.json 的 inbound 为 SHIPMENT_REPORT-display，导航意图为 #SHIPMENT_REPORT-display。应用版本为 0.0.4。组件、视图、控制器、资源路径、预览入口及测试引用已同步调整，必须更新完整项目，不能只替换 manifest.json。
 
 GitHub 仓库及 BAS 文件夹仍为 project2；npm 包名采用 shipment-report。部署目标仍为现有 BSP ZSHIPMENT、包 ZSHIPMENT，不创建另一个 BSP。
 

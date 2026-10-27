@@ -1,866 +1,1363 @@
 <?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="SAP__aggregation"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="SAP__analytics"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AUTHORIZATION',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="Org.OData.Authorization.V1" Alias="SAP__authorization"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="SAP__capabilities"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="SAP__communication"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HIERARCHY',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.Hierarchy.v1" Alias="SAP__hierarchy"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="SAP__HTML5"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="SAP__measures"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PDF',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="SAP__personalData"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_SESSION',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.Session.v1" Alias="SAP__session"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_SUPPORT',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.Support.v1" Alias="SAP__support"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="SAP__UI"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value">
-        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="SAP__validation"/>
-    </edmx:Reference>
-    <edmx:DataServices>
-        <Schema Namespace="com.sap.gateway.srvd.zui_shipment_report.v0001" Alias="SAP__self">
-            <Annotation Term="SAP__core.SchemaVersion" String="1.0.0"/>
-            <EntityType Name="PlantValueHelpType">
-                <Key>
-                    <PropertyRef Name="Plant"/>
-                </Key>
-                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
-                <Property Name="PlantName" Type="Edm.String" Nullable="false" MaxLength="30"/>
-            </EntityType>
-            <EntityType Name="PurchaseReportParameters">
-                <Key>
-                    <PropertyRef Name="p_plant"/>
-                    <PropertyRef Name="p_material"/>
-                    <PropertyRef Name="p_date_from"/>
-                    <PropertyRef Name="p_date_to"/>
-                    <PropertyRef Name="p_release_from"/>
-                </Key>
-                <Property Name="p_plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
-                <Property Name="p_material" Type="Edm.String" Nullable="false" MaxLength="40"/>
-                <Property Name="p_date_from" Type="Edm.Date" Nullable="false"/>
-                <Property Name="p_date_to" Type="Edm.Date" Nullable="false"/>
-                <Property Name="p_release_from" Type="Edm.Date" Nullable="false"/>
-                <NavigationProperty Name="Set" Type="Collection(com.sap.gateway.srvd.zui_shipment_report.v0001.PurchaseReportType)" Partner="Parameters" ContainsTarget="true"/>
-            </EntityType>
-            <EntityType Name="SalesReportType">
-                <Key>
-                    <PropertyRef Name="RowNumber"/>
-                </Key>
-                <Property Name="RowNumber" Type="Edm.Int32" Nullable="false"/>
-                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4"/>
-                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
-                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40"/>
-                <Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="10"/>
-                <Property Name="DateFrom" Type="Edm.Date"/>
-                <Property Name="DateTo" Type="Edm.Date"/>
-                <Property Name="YearWeek" Type="Edm.String" Nullable="false" MaxLength="6"/>
-                <Property Name="PostingDate" Type="Edm.Date"/>
-                <Property Name="Metric" Type="Edm.String" Nullable="false" MaxLength="6"/>
-                <Property Name="MetricText" Type="Edm.String" Nullable="false" MaxLength="20"/>
-                <Property Name="Quantity" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="3"/>
-                <Property Name="Unit" Type="Edm.String" Nullable="false" MaxLength="3"/>
-                <Property Name="SourceUnit" Type="Edm.String" Nullable="false" MaxLength="3"/>
-                <Property Name="ReleaseType" Type="Edm.String" Nullable="false" MaxLength="1"/>
-                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4"/>
-                <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2"/>
-                <Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="2"/>
-                <Property Name="OrganizationDivision" Type="Edm.String" Nullable="false" MaxLength="2"/>
-                <Property Name="ScheduleLineCategory" Type="Edm.String" Nullable="false" MaxLength="2"/>
-                <Property Name="IsRequested" Type="Edm.String" Nullable="false" MaxLength="1"/>
-                <Property Name="IsConfirmed" Type="Edm.String" Nullable="false" MaxLength="1"/>
-                <Property Name="SourceRows" Type="Edm.Int32" Nullable="false"/>
-                <Property Name="HasIssue" Type="Edm.String" Nullable="false" MaxLength="1"/>
-                <Property Name="StatusText" Type="Edm.String" Nullable="false" MaxLength="80"/>
-                <NavigationProperty Name="Parameters" Type="com.sap.gateway.srvd.zui_shipment_report.v0001.SalesReportParameters" Nullable="false"/>
-            </EntityType>
-            <EntityType Name="SalesReportParameters">
-                <Key>
-                    <PropertyRef Name="p_plant"/>
-                    <PropertyRef Name="p_material"/>
-                    <PropertyRef Name="p_date_from"/>
-                    <PropertyRef Name="p_date_to"/>
-                    <PropertyRef Name="p_release_from"/>
-                </Key>
-                <Property Name="p_plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
-                <Property Name="p_material" Type="Edm.String" Nullable="false" MaxLength="40"/>
-                <Property Name="p_date_from" Type="Edm.Date" Nullable="false"/>
-                <Property Name="p_date_to" Type="Edm.Date" Nullable="false"/>
-                <Property Name="p_release_from" Type="Edm.Date" Nullable="false"/>
-                <NavigationProperty Name="Set" Type="Collection(com.sap.gateway.srvd.zui_shipment_report.v0001.SalesReportType)" Partner="Parameters" ContainsTarget="true"/>
-            </EntityType>
-            <EntityType Name="ProductValueHelpType">
-                <Key>
-                    <PropertyRef Name="Product"/>
-                </Key>
-                <Property Name="Product" Type="Edm.String" Nullable="false" MaxLength="18"/>
-                <Property Name="Product_Text" Type="Edm.String" Nullable="false" MaxLength="40"/>
-                <Property Name="ProductExternalID" Type="Edm.String" Nullable="false" MaxLength="40"/>
-            </EntityType>
-            <EntityType Name="PurchaseReportType">
-                <Key>
-                    <PropertyRef Name="RowNumber"/>
-                </Key>
-                <Property Name="RowNumber" Type="Edm.Int32" Nullable="false"/>
-                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4"/>
-                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
-                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40"/>
-                <Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="10"/>
-                <Property Name="DateFrom" Type="Edm.Date"/>
-                <Property Name="DateTo" Type="Edm.Date"/>
-                <Property Name="YearWeek" Type="Edm.String" Nullable="false" MaxLength="6"/>
-                <Property Name="PostingDate" Type="Edm.Date"/>
-                <Property Name="Metric" Type="Edm.String" Nullable="false" MaxLength="6"/>
-                <Property Name="MetricText" Type="Edm.String" Nullable="false" MaxLength="20"/>
-                <Property Name="Quantity" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="3"/>
-                <Property Name="Unit" Type="Edm.String" Nullable="false" MaxLength="3"/>
-                <Property Name="SourceUnit" Type="Edm.String" Nullable="false" MaxLength="3"/>
-                <Property Name="ReleaseType" Type="Edm.String" Nullable="false" MaxLength="1"/>
-                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4"/>
-                <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2"/>
-                <Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="2"/>
-                <Property Name="OrganizationDivision" Type="Edm.String" Nullable="false" MaxLength="2"/>
-                <Property Name="ScheduleLineCategory" Type="Edm.String" Nullable="false" MaxLength="2"/>
-                <Property Name="IsRequested" Type="Edm.String" Nullable="false" MaxLength="1"/>
-                <Property Name="IsConfirmed" Type="Edm.String" Nullable="false" MaxLength="1"/>
-                <Property Name="SourceRows" Type="Edm.Int32" Nullable="false"/>
-                <Property Name="HasIssue" Type="Edm.String" Nullable="false" MaxLength="1"/>
-                <Property Name="StatusText" Type="Edm.String" Nullable="false" MaxLength="80"/>
-                <NavigationProperty Name="Parameters" Type="com.sap.gateway.srvd.zui_shipment_report.v0001.PurchaseReportParameters" Nullable="false"/>
-            </EntityType>
-            <EntityContainer Name="Container">
-                <EntitySet Name="PlantValueHelp" EntityType="com.sap.gateway.srvd.zui_shipment_report.v0001.PlantValueHelpType"/>
-                <EntitySet Name="ProductValueHelp" EntityType="com.sap.gateway.srvd.zui_shipment_report.v0001.ProductValueHelpType"/>
-                <EntitySet Name="PurchaseReport" EntityType="com.sap.gateway.srvd.zui_shipment_report.v0001.PurchaseReportParameters">
-                    <NavigationPropertyBinding Path="Set/Parameters" Target="PurchaseReport"/>
-                </EntitySet>
-                <EntitySet Name="SalesReport" EntityType="com.sap.gateway.srvd.zui_shipment_report.v0001.SalesReportParameters">
-                    <NavigationPropertyBinding Path="Set/Parameters" Target="SalesReport"/>
-                </EntitySet>
-            </EntityContainer>
-            <Annotations Target="SAP__self.PlantValueHelpType/Plant">
-                <Annotation Term="SAP__common.Text" Path="PlantName"/>
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Label" String="工厂"/>
-                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=WERKS_D"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PlantValueHelpType">
-                <Annotation Term="SAP__common.Label" String="工厂（按名称）"/>
-            </Annotations>
-            <Annotations Target="SAP__self.Container/PlantValueHelp">
-                <Annotation Term="SAP__capabilities.SearchRestrictions">
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns="http://docs.oasis-open.org/odata/ns/edm" Version="4.0">
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="SAP__aggregation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="SAP__analytics"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AUTHORIZATION',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="Org.OData.Authorization.V1" Alias="SAP__authorization"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="SAP__capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="SAP__communication"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HIERARCHY',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="com.sap.vocabularies.Hierarchy.v1" Alias="SAP__hierarchy"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="SAP__HTML5"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="SAP__measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PDF',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="SAP__personalData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_SESSION',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="com.sap.vocabularies.Session.v1" Alias="SAP__session"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_SUPPORT',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="com.sap.vocabularies.Support.v1" Alias="SAP__support"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="SAP__UI"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value">
+    <edmx:Include Namespace="Org.OData.Validation.V1" Alias="SAP__validation"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema Namespace="com.sap.gateway.srvd.zui_shipment_report.v0001" Alias="SAP__self">
+      <Annotation Term="SAP__core.SchemaVersion" String="1.0.0"/>
+      <EntityType Name="PlantValueHelpType">
+        <Key>
+          <PropertyRef Name="Plant"/>
+        </Key>
+        <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
+        <Property Name="PlantName" Type="Edm.String" Nullable="false" MaxLength="30"/>
+      </EntityType>
+      <EntityType Name="PurchaseReportParameters">
+        <Key>
+          <PropertyRef Name="p_plant"/>
+          <PropertyRef Name="p_date_from"/>
+          <PropertyRef Name="p_date_to"/>
+          <PropertyRef Name="p_release_from"/>
+        </Key>
+        <Property Name="p_plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
+        <Property Name="p_date_from" Type="Edm.Date" Nullable="false"/>
+        <Property Name="p_date_to" Type="Edm.Date" Nullable="false"/>
+        <Property Name="p_release_from" Type="Edm.Date" Nullable="false"/>
+        <NavigationProperty Name="Set" Type="Collection(com.sap.gateway.srvd.zui_shipment_report.v0001.PurchaseReportType)" Partner="Parameters" ContainsTarget="true"/>
+      </EntityType>
+      <EntityType Name="SalesReportType">
+        <Key>
+          <PropertyRef Name="RowNumber"/>
+        </Key>
+        <Property Name="RowNumber" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4"/>
+        <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
+        <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40"/>
+        <Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="10"/>
+        <Property Name="DateFrom" Type="Edm.Date"/>
+        <Property Name="DateTo" Type="Edm.Date"/>
+        <Property Name="YearWeek" Type="Edm.String" Nullable="false" MaxLength="6"/>
+        <Property Name="PostingDate" Type="Edm.Date"/>
+        <Property Name="Metric" Type="Edm.String" Nullable="false" MaxLength="6"/>
+        <Property Name="MetricText" Type="Edm.String" Nullable="false" MaxLength="20"/>
+        <Property Name="Quantity" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="3"/>
+        <Property Name="Unit" Type="Edm.String" Nullable="false" MaxLength="3"/>
+        <Property Name="SourceUnit" Type="Edm.String" Nullable="false" MaxLength="3"/>
+        <Property Name="ReleaseType" Type="Edm.String" Nullable="false" MaxLength="1"/>
+        <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4"/>
+        <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2"/>
+        <Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="2"/>
+        <Property Name="OrganizationDivision" Type="Edm.String" Nullable="false" MaxLength="2"/>
+        <Property Name="ScheduleLineCategory" Type="Edm.String" Nullable="false" MaxLength="2"/>
+        <Property Name="IsRequested" Type="Edm.String" Nullable="false" MaxLength="1"/>
+        <Property Name="IsConfirmed" Type="Edm.String" Nullable="false" MaxLength="1"/>
+        <Property Name="SourceRows" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="HasIssue" Type="Edm.String" Nullable="false" MaxLength="1"/>
+        <Property Name="StatusText" Type="Edm.String" Nullable="false" MaxLength="80"/>
+        <NavigationProperty Name="Parameters" Type="com.sap.gateway.srvd.zui_shipment_report.v0001.SalesReportParameters" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="SupplierValueHelpType">
+        <Key>
+          <PropertyRef Name="Supplier"/>
+        </Key>
+        <Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="10"/>
+        <Property Name="SupplierName" Type="Edm.String" Nullable="false" MaxLength="35"/>
+        <Property Name="BusinessPartnerName1" Type="Edm.String" Nullable="false" MaxLength="40"/>
+        <Property Name="BPSupplierName" Type="Edm.String" Nullable="false" MaxLength="81"/>
+        <Property Name="AuthorizationGroup" Type="Edm.String" Nullable="false" MaxLength="4"/>
+        <Property Name="SupplierAccountGroup" Type="Edm.String" Nullable="false" MaxLength="4"/>
+        <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" Nullable="false" MaxLength="1"/>
+        <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10"/>
+        <Property Name="BusinessPartnerType" Type="Edm.String" Nullable="false" MaxLength="4"/>
+        <Property Name="DataControllerSet" Type="Edm.String" Nullable="false" MaxLength="1"/>
+        <Property Name="DataController1" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController2" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController3" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController4" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController5" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController6" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController7" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController8" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController9" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController10" Type="Edm.String" Nullable="false" MaxLength="30"/>
+      </EntityType>
+      <EntityType Name="SalesReportParameters">
+        <Key>
+          <PropertyRef Name="p_plant"/>
+          <PropertyRef Name="p_date_from"/>
+          <PropertyRef Name="p_date_to"/>
+          <PropertyRef Name="p_release_from"/>
+        </Key>
+        <Property Name="p_plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
+        <Property Name="p_date_from" Type="Edm.Date" Nullable="false"/>
+        <Property Name="p_date_to" Type="Edm.Date" Nullable="false"/>
+        <Property Name="p_release_from" Type="Edm.Date" Nullable="false"/>
+        <NavigationProperty Name="Set" Type="Collection(com.sap.gateway.srvd.zui_shipment_report.v0001.SalesReportType)" Partner="Parameters" ContainsTarget="true"/>
+      </EntityType>
+      <EntityType Name="ProductValueHelpType">
+        <Key>
+          <PropertyRef Name="Product"/>
+        </Key>
+        <Property Name="Product" Type="Edm.String" Nullable="false" MaxLength="18"/>
+        <Property Name="Product_Text" Type="Edm.String" Nullable="false" MaxLength="40"/>
+        <Property Name="ProductExternalID" Type="Edm.String" Nullable="false" MaxLength="40"/>
+      </EntityType>
+      <EntityType Name="CustomerValueHelpType">
+        <Key>
+          <PropertyRef Name="Customer"/>
+        </Key>
+        <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10"/>
+        <Property Name="OrganizationBPName1" Type="Edm.String" Nullable="false" MaxLength="35"/>
+        <Property Name="BusinessPartnerName1" Type="Edm.String" Nullable="false" MaxLength="40"/>
+        <Property Name="OrganizationBPName2" Type="Edm.String" Nullable="false" MaxLength="35"/>
+        <Property Name="BusinessPartnerName2" Type="Edm.String" Nullable="false" MaxLength="40"/>
+        <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3"/>
+        <Property Name="CityName" Type="Edm.String" Nullable="false" MaxLength="35"/>
+        <Property Name="BPAddrCityName" Type="Edm.String" Nullable="false" MaxLength="40"/>
+        <Property Name="StreetName" Type="Edm.String" Nullable="false" MaxLength="35"/>
+        <Property Name="BPAddrStreetName" Type="Edm.String" Nullable="false" MaxLength="60"/>
+        <Property Name="PostalCode" Type="Edm.String" Nullable="false" MaxLength="10"/>
+        <Property Name="CustomerName" Type="Edm.String" Nullable="false" MaxLength="80"/>
+        <Property Name="BPCustomerName" Type="Edm.String" Nullable="false" MaxLength="81"/>
+        <Property Name="CustomerAccountGroup" Type="Edm.String" Nullable="false" MaxLength="4"/>
+        <Property Name="AuthorizationGroup" Type="Edm.String" Nullable="false" MaxLength="4"/>
+        <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" Nullable="false" MaxLength="1"/>
+        <Property Name="IsCompetitor" Type="Edm.Boolean" Nullable="false"/>
+        <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10"/>
+        <Property Name="BusinessPartnerType" Type="Edm.String" Nullable="false" MaxLength="4"/>
+        <Property Name="DataControllerSet" Type="Edm.String" Nullable="false" MaxLength="1"/>
+        <Property Name="DataController1" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController2" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController3" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController4" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController5" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController6" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController7" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController8" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController9" Type="Edm.String" Nullable="false" MaxLength="30"/>
+        <Property Name="DataController10" Type="Edm.String" Nullable="false" MaxLength="30"/>
+      </EntityType>
+      <EntityType Name="PurchaseReportType">
+        <Key>
+          <PropertyRef Name="RowNumber"/>
+        </Key>
+        <Property Name="RowNumber" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4"/>
+        <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
+        <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40"/>
+        <Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="10"/>
+        <Property Name="DateFrom" Type="Edm.Date"/>
+        <Property Name="DateTo" Type="Edm.Date"/>
+        <Property Name="YearWeek" Type="Edm.String" Nullable="false" MaxLength="6"/>
+        <Property Name="PostingDate" Type="Edm.Date"/>
+        <Property Name="Metric" Type="Edm.String" Nullable="false" MaxLength="6"/>
+        <Property Name="MetricText" Type="Edm.String" Nullable="false" MaxLength="20"/>
+        <Property Name="Quantity" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="3"/>
+        <Property Name="Unit" Type="Edm.String" Nullable="false" MaxLength="3"/>
+        <Property Name="SourceUnit" Type="Edm.String" Nullable="false" MaxLength="3"/>
+        <Property Name="ReleaseType" Type="Edm.String" Nullable="false" MaxLength="1"/>
+        <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4"/>
+        <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2"/>
+        <Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="2"/>
+        <Property Name="OrganizationDivision" Type="Edm.String" Nullable="false" MaxLength="2"/>
+        <Property Name="ScheduleLineCategory" Type="Edm.String" Nullable="false" MaxLength="2"/>
+        <Property Name="IsRequested" Type="Edm.String" Nullable="false" MaxLength="1"/>
+        <Property Name="IsConfirmed" Type="Edm.String" Nullable="false" MaxLength="1"/>
+        <Property Name="SourceRows" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="HasIssue" Type="Edm.String" Nullable="false" MaxLength="1"/>
+        <Property Name="StatusText" Type="Edm.String" Nullable="false" MaxLength="80"/>
+        <NavigationProperty Name="Parameters" Type="com.sap.gateway.srvd.zui_shipment_report.v0001.PurchaseReportParameters" Nullable="false"/>
+      </EntityType>
+      <EntityContainer Name="Container">
+        <EntitySet Name="CustomerValueHelp" EntityType="com.sap.gateway.srvd.zui_shipment_report.v0001.CustomerValueHelpType"/>
+        <EntitySet Name="PlantValueHelp" EntityType="com.sap.gateway.srvd.zui_shipment_report.v0001.PlantValueHelpType"/>
+        <EntitySet Name="ProductValueHelp" EntityType="com.sap.gateway.srvd.zui_shipment_report.v0001.ProductValueHelpType"/>
+        <EntitySet Name="PurchaseReport" EntityType="com.sap.gateway.srvd.zui_shipment_report.v0001.PurchaseReportParameters">
+          <NavigationPropertyBinding Path="Set/Parameters" Target="PurchaseReport"/>
+        </EntitySet>
+        <EntitySet Name="SalesReport" EntityType="com.sap.gateway.srvd.zui_shipment_report.v0001.SalesReportParameters">
+          <NavigationPropertyBinding Path="Set/Parameters" Target="SalesReport"/>
+        </EntitySet>
+        <EntitySet Name="SupplierValueHelp" EntityType="com.sap.gateway.srvd.zui_shipment_report.v0001.SupplierValueHelpType"/>
+      </EntityContainer>
+      <Annotations Target="SAP__self.PlantValueHelpType/Plant">
+        <Annotation Term="SAP__common.Text" Path="PlantName"/>
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__common.Label" String="工厂"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=WERKS_D"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PlantValueHelpType">
+        <Annotation Term="SAP__common.Label" String="工厂（按名称）"/>
+      </Annotations>
+      <Annotations Target="SAP__self.Container/PlantValueHelp">
+        <Annotation Term="SAP__capabilities.SearchRestrictions">
+          <Record>
+            <PropertyValue Property="Searchable" Bool="true"/>
+            <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group "/>
+            <PropertyValue Property="SearchSyntax" String="https://url.sap/odata-search"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+            <PropertyValue Property="QueryOptions">
+              <Record>
+                <PropertyValue Property="SelectSupported" Bool="true"/>
+              </Record>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportParameters/p_plant">
+        <Annotation Term="SAP__common.Label" String="工厂"/>
+        <Annotation Term="SAP__common.QuickInfo" String="工厂"/>
+        <Annotation Term="SAP__core.Computed"/>
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__common.ValueListReferences">
+          <Collection>
+            <String>../../../../srvd_f4/sap/i_plantstdvh/0001;ps='srvd-zui_shipment_report-0001';va='com.sap.gateway.srvd.zui_shipment_report.v0001.et-$parameter$zce_shipmentpurchase.p_plant'/$metadata</String>
+          </Collection>
+        </Annotation>
+        <Annotation Term="SAP__common.Heading" String="工厂"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=WERKS_D"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportParameters/p_date_from">
+        <Annotation Term="SAP__common.Label" String="查询开始日期"/>
+        <Annotation Term="SAP__common.QuickInfo" String="日期"/>
+        <Annotation Term="SAP__core.Computed"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DATUM"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportParameters/p_date_to">
+        <Annotation Term="SAP__common.Label" String="查询结束日期"/>
+        <Annotation Term="SAP__common.QuickInfo" String="日期"/>
+        <Annotation Term="SAP__core.Computed"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DATUM"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportParameters/p_release_from">
+        <Annotation Term="SAP__common.Label" String="采购发布创建起始日期"/>
+        <Annotation Term="SAP__common.QuickInfo" String="日期"/>
+        <Annotation Term="SAP__core.Computed"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DATUM"/>
+      </Annotations>
+      <Annotations Target="SAP__self.Container/PurchaseReport">
+        <Annotation Term="SAP__capabilities.NavigationRestrictions">
+          <Record>
+            <PropertyValue Property="RestrictedProperties">
+              <Collection>
+                <Record>
+                  <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Set"/>
+                  <PropertyValue Property="InsertRestrictions">
                     <Record>
-                        <PropertyValue Property="Searchable" Bool="true"/>
-                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group "/>
-                        <PropertyValue Property="SearchSyntax" String="https://url.sap/odata-search"/>
+                      <PropertyValue Property="Insertable" Bool="false"/>
                     </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                  </PropertyValue>
+                  <PropertyValue Property="UpdateRestrictions">
                     <Record>
-                        <PropertyValue Property="Insertable" Bool="false"/>
+                      <PropertyValue Property="Updatable" Bool="false"/>
                     </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                  </PropertyValue>
+                  <PropertyValue Property="DeleteRestrictions">
                     <Record>
-                        <PropertyValue Property="Deletable" Bool="false"/>
+                      <PropertyValue Property="Deletable" Bool="false"/>
                     </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                  </PropertyValue>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.SearchRestrictions">
+          <Record>
+            <PropertyValue Property="Searchable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.FilterRestrictions">
+          <Record>
+            <PropertyValue Property="NonFilterableProperties">
+              <Collection>
+                <PropertyPath>p_plant</PropertyPath>
+                <PropertyPath>p_date_from</PropertyPath>
+                <PropertyPath>p_date_to</PropertyPath>
+                <PropertyPath>p_release_from</PropertyPath>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.SortRestrictions">
+          <Record>
+            <PropertyValue Property="NonSortableProperties">
+              <Collection>
+                <PropertyPath>p_plant</PropertyPath>
+                <PropertyPath>p_date_from</PropertyPath>
+                <PropertyPath>p_date_to</PropertyPath>
+                <PropertyPath>p_release_from</PropertyPath>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.ReadRestrictions">
+          <Record>
+            <PropertyValue Property="Readable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+            <PropertyValue Property="NonUpdatableNavigationProperties">
+              <Collection>
+                <PropertyPath>Set</PropertyPath>
+              </Collection>
+            </PropertyValue>
+            <PropertyValue Property="QueryOptions">
+              <Record>
+                <PropertyValue Property="SelectSupported" Bool="true"/>
+              </Record>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportParameters">
+        <Annotation Term="SAP__common.ResultContext"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/RowNumber">
+        <Annotation Term="SAP__common.Label" String="行号"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/CompanyCode">
+        <Annotation Term="SAP__common.Label" String="公司代码"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/Plant">
+        <Annotation Term="SAP__common.Label" String="工厂"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/Material">
+        <Annotation Term="SAP__common.Label" String="物料"/>
+        <Annotation Term="SAP__common.ValueListReferences">
+          <Collection>
+            <String>../../../../srvd_f4/sap/i_productstdvh/0001;ps='srvd-zui_shipment_report-0001';va='com.sap.gateway.srvd.zui_shipment_report.v0001.et-zce_shipmentsales.material'/$metadata</String>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/Partner">
+        <Annotation Term="SAP__common.Label" String="客户"/>
+        <Annotation Term="SAP__common.ValueListReferences">
+          <Collection>
+            <String>../../../../srvd_f4/sap/i_customer_vh/0001;ps='srvd-zui_shipment_report-0001';va='com.sap.gateway.srvd.zui_shipment_report.v0001.et-zce_shipmentsales.partner'/$metadata</String>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/DateFrom">
+        <Annotation Term="SAP__common.Label" String="业务日期"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/DateTo">
+        <Annotation Term="SAP__common.Label" String="日期至"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/YearWeek">
+        <Annotation Term="SAP__common.Label" String="年周"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/PostingDate">
+        <Annotation Term="SAP__common.Label" String="过账日期"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/Metric">
+        <Annotation Term="SAP__common.Label" String="指标代码"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/MetricText">
+        <Annotation Term="SAP__common.Label" String="指标"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/Quantity">
+        <Annotation Term="SAP__common.Label" String="数量"/>
+        <Annotation Term="SAP__measures.Unit" Path="Unit"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/Unit">
+        <Annotation Term="SAP__common.IsUnit"/>
+        <Annotation Term="SAP__common.Label" String="数量单位"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/SourceUnit">
+        <Annotation Term="SAP__common.IsUnit"/>
+        <Annotation Term="SAP__common.Label" String="来源辅助单位"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/ReleaseType">
+        <Annotation Term="SAP__common.Label" String="发布类型"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/SalesOrganization">
+        <Annotation Term="SAP__common.Label" String="销售组织"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/DistributionChannel">
+        <Annotation Term="SAP__common.Label" String="分销渠道"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/Division">
+        <Annotation Term="SAP__common.Label" String="产品组"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/OrganizationDivision">
+        <Annotation Term="SAP__common.Label" String="组织产品组"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/ScheduleLineCategory">
+        <Annotation Term="SAP__common.Label" String="计划行类别"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/IsRequested">
+        <Annotation Term="SAP__common.Label" String="需求行标识"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/IsConfirmed">
+        <Annotation Term="SAP__common.Label" String="确认行标识"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/SourceRows">
+        <Annotation Term="SAP__common.Label" String="来源行数"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/HasIssue">
+        <Annotation Term="SAP__common.Label" String="异常标识"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType/StatusText">
+        <Annotation Term="SAP__common.Label" String="口径说明"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportType">
+        <Annotation Term="SAP__common.Label" String="发货报表：销售每日汇总"/>
+        <Annotation Term="SAP__UI.LineItem">
+          <Collection>
+            <Record Type="SAP__UI.DataField">
+              <PropertyValue Property="Value" Path="Material"/>
+            </Record>
+            <Record Type="SAP__UI.DataField">
+              <PropertyValue Property="Value" Path="Plant"/>
+            </Record>
+            <Record Type="SAP__UI.DataField">
+              <PropertyValue Property="Value" Path="Partner"/>
+            </Record>
+            <Record Type="SAP__UI.DataField">
+              <PropertyValue Property="Value" Path="DateFrom"/>
+            </Record>
+            <Record Type="SAP__UI.DataField">
+              <PropertyValue Property="Value" Path="YearWeek"/>
+            </Record>
+            <Record Type="SAP__UI.DataField">
+              <PropertyValue Property="Value" Path="MetricText"/>
+            </Record>
+            <Record Type="SAP__UI.DataField">
+              <PropertyValue Property="Value" Path="Quantity"/>
+            </Record>
+            <Record Type="SAP__UI.DataField">
+              <PropertyValue Property="Value" Path="Unit"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="SAP__UI.SelectionFields">
+          <Collection>
+            <PropertyPath>Material</PropertyPath>
+            <PropertyPath>Partner</PropertyPath>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="SAP__self.Container">
+        <Annotation Term="SAP__CodeList.UnitsOfMeasure">
+          <Record>
+            <PropertyValue Property="Url" String="../../../../default/iwbep/common/0001/$metadata"/>
+            <PropertyValue Property="CollectionPath" String="UnitsOfMeasure"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+        <Annotation Term="SAP__capabilities.FilterFunctions">
+          <Collection>
+            <String>eq</String>
+            <String>ne</String>
+            <String>gt</String>
+            <String>ge</String>
+            <String>lt</String>
+            <String>le</String>
+            <String>and</String>
+            <String>or</String>
+            <String>contains</String>
+            <String>startswith</String>
+            <String>endswith</String>
+            <String>any</String>
+            <String>all</String>
+          </Collection>
+        </Annotation>
+        <Annotation Term="SAP__support.TechnicalInfoLinks">
+          <Record>
+            <PropertyValue Property="Url" String="../../../../default/iwbep/common/0001/$metadata"/>
+            <PropertyValue Property="FunctionImport" String="GetTechnicalInfoLinks"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.SupportedFormats">
+          <Collection>
+            <String>application/json</String>
+            <String>application/pdf</String>
+          </Collection>
+        </Annotation>
+        <Annotation Term="SAP__PDF.Features">
+          <Record>
+            <PropertyValue Property="DocumentDescriptionReference" String="../../../../default/iwbep/common/0001/$metadata"/>
+            <PropertyValue Property="DocumentDescriptionCollection" String="MyDocumentDescriptions"/>
+            <PropertyValue Property="ArchiveFormat" Bool="true"/>
+            <PropertyValue Property="Border" Bool="true"/>
+            <PropertyValue Property="CoverPage" Bool="true"/>
+            <PropertyValue Property="FitToPage" Bool="true"/>
+            <PropertyValue Property="FontName" Bool="true"/>
+            <PropertyValue Property="FontSize" Bool="true"/>
+            <PropertyValue Property="HeaderFooter" Bool="true"/>
+            <PropertyValue Property="IANATimezoneFormat" Bool="true"/>
+            <PropertyValue Property="Margin" Bool="true"/>
+            <PropertyValue Property="Padding" Bool="true"/>
+            <PropertyValue Property="ResultSizeDefault" Int="20000"/>
+            <PropertyValue Property="ResultSizeMaximum" Int="20000"/>
+            <PropertyValue Property="Signature" Bool="true"/>
+            <PropertyValue Property="TextDirectionLayout" Bool="true"/>
+            <PropertyValue Property="Treeview" Bool="true"/>
+            <PropertyValue Property="UploadToFileShare" Bool="true"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.BatchSupport">
+          <Record>
+            <PropertyValue Property="SupportedFormats">
+              <Collection>
+                <String>application/json</String>
+                <String>multipart/mixed</String>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.KeyAsSegmentSupported"/>
+        <Annotation Term="SAP__capabilities.AsynchronousRequestsSupported"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/Supplier">
+        <Annotation Term="SAP__common.Text" Path="BPSupplierName"/>
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__common.Label" String="供应商"/>
+        <Annotation Term="SAP__common.QuickInfo" String="供应商科目编号"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=LIFNR"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/SupplierName">
+        <Annotation Term="SAP__common.Label" String="供应商名称 1"/>
+        <Annotation Term="SAP__common.QuickInfo" String="供应商名称"/>
+        <Annotation Term="SAP__common.Heading" String="名称"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=NAME1_GP"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/BusinessPartnerName1">
+        <Annotation Term="SAP__common.Label" String="业务伙伴名称1"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴名称1"/>
+        <Annotation Term="SAP__common.Heading" String="名称"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=AD_NAME1"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/BPSupplierName">
+        <Annotation Term="SAP__common.Label" String="业务伙伴供应商名称"/>
+        <Annotation Term="SAP__common.Heading" String="供应商名称"/>
+        <Annotation Term="SAP__common.QuickInfo" String="供应商名称"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/AuthorizationGroup">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="权限"/>
+        <Annotation Term="SAP__common.Heading" String="AuGr"/>
+        <Annotation Term="SAP__common.QuickInfo" String="权限组"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BRGRU"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/SupplierAccountGroup">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="科目组"/>
+        <Annotation Term="SAP__common.Heading" String="组"/>
+        <Annotation Term="SAP__common.QuickInfo" String="供应商科目组"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=KTOKK"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/IsBusinessPurposeCompleted">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="目的已完成"/>
+        <Annotation Term="SAP__common.Heading" String="业务目的完成标志"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务目的完成标志"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=CVP_XBLCK"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/BusinessPartner">
+        <Annotation Term="SAP__common.Label" String="业务伙伴"/>
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__common.Heading" String="业务伙伴"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴编号"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_PARTNER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/BusinessPartnerType">
+        <Annotation Term="SAP__common.Label" String="业务伙伴类型"/>
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__common.Heading" String="类型"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴类型"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_BPKIND"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/DataControllerSet">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器集"/>
+        <Annotation Term="SAP__common.Heading" String="数据控制器集标志"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器集标志"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_XDCSET"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/DataController1">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/DataController2">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/DataController3">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/DataController4">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/DataController5">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/DataController6">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/DataController7">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/DataController8">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/DataController9">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType/DataController10">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SupplierValueHelpType">
+        <Annotation Term="SAP__common.Label" String="供应商"/>
+      </Annotations>
+      <Annotations Target="SAP__self.Container/SupplierValueHelp">
+        <Annotation Term="SAP__capabilities.SearchRestrictions">
+          <Record>
+            <PropertyValue Property="Searchable" Bool="true"/>
+            <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group "/>
+            <PropertyValue Property="SearchSyntax" String="https://url.sap/odata-search"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+            <PropertyValue Property="QueryOptions">
+              <Record>
+                <PropertyValue Property="SelectSupported" Bool="true"/>
+              </Record>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportParameters/p_plant">
+        <Annotation Term="SAP__common.Label" String="工厂"/>
+        <Annotation Term="SAP__common.QuickInfo" String="工厂"/>
+        <Annotation Term="SAP__core.Computed"/>
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__common.ValueListReferences">
+          <Collection>
+            <String>../../../../srvd_f4/sap/i_plantstdvh/0001;ps='srvd-zui_shipment_report-0001';va='com.sap.gateway.srvd.zui_shipment_report.v0001.et-$parameter$zce_shipmentsales.p_plant'/$metadata</String>
+          </Collection>
+        </Annotation>
+        <Annotation Term="SAP__common.Heading" String="工厂"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=WERKS_D"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportParameters/p_date_from">
+        <Annotation Term="SAP__common.Label" String="查询开始日期"/>
+        <Annotation Term="SAP__common.QuickInfo" String="日期"/>
+        <Annotation Term="SAP__core.Computed"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DATUM"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportParameters/p_date_to">
+        <Annotation Term="SAP__common.Label" String="查询结束日期"/>
+        <Annotation Term="SAP__common.QuickInfo" String="日期"/>
+        <Annotation Term="SAP__core.Computed"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DATUM"/>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportParameters/p_release_from">
+        <Annotation Term="SAP__common.Label" String="采购发布创建起始日期"/>
+        <Annotation Term="SAP__common.QuickInfo" String="日期"/>
+        <Annotation Term="SAP__core.Computed"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DATUM"/>
+      </Annotations>
+      <Annotations Target="SAP__self.Container/SalesReport">
+        <Annotation Term="SAP__capabilities.NavigationRestrictions">
+          <Record>
+            <PropertyValue Property="RestrictedProperties">
+              <Collection>
+                <Record>
+                  <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Set"/>
+                  <PropertyValue Property="InsertRestrictions">
                     <Record>
-                        <PropertyValue Property="Updatable" Bool="false"/>
-                        <PropertyValue Property="QueryOptions">
-                            <Record>
-                                <PropertyValue Property="SelectSupported" Bool="true"/>
-                            </Record>
-                        </PropertyValue>
+                      <PropertyValue Property="Insertable" Bool="false"/>
                     </Record>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportParameters/p_plant">
-                <Annotation Term="SAP__common.Label" String="工厂"/>
-                <Annotation Term="SAP__common.QuickInfo" String="工厂"/>
-                <Annotation Term="SAP__core.Computed"/>
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.ValueListReferences">
-                    <Collection>
-                        <String>../../../../srvd_f4/sap/i_plantstdvh/0001;ps='srvd-zui_shipment_report-0001';va='com.sap.gateway.srvd.zui_shipment_report.v0001.et-$parameter$zce_shipmentpurchase.p_plant'/$metadata</String>
-                    </Collection>
-                </Annotation>
-                <Annotation Term="SAP__common.Heading" String="工厂"/>
-                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=WERKS_D"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportParameters/p_material">
-                <Annotation Term="SAP__common.Label" String="物料"/>
-                <Annotation Term="SAP__common.QuickInfo" String="物料编号"/>
-                <Annotation Term="SAP__core.Computed"/>
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.ValueListReferences">
-                    <Collection>
-                        <String>../../../../srvd_f4/sap/i_productstdvh/0001;ps='srvd-zui_shipment_report-0001';va='com.sap.gateway.srvd.zui_shipment_report.v0001.et-$parameter$zce_shipmentpurchase.p_material'/$metadata</String>
-                    </Collection>
-                </Annotation>
-                <Annotation Term="SAP__common.Heading" String="物料"/>
-                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=MATNR"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportParameters/p_date_from">
-                <Annotation Term="SAP__common.Label" String="查询开始日期"/>
-                <Annotation Term="SAP__common.QuickInfo" String="日期"/>
-                <Annotation Term="SAP__core.Computed"/>
-                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DATUM"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportParameters/p_date_to">
-                <Annotation Term="SAP__common.Label" String="查询结束日期"/>
-                <Annotation Term="SAP__common.QuickInfo" String="日期"/>
-                <Annotation Term="SAP__core.Computed"/>
-                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DATUM"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportParameters/p_release_from">
-                <Annotation Term="SAP__common.Label" String="采购发布创建起始日期"/>
-                <Annotation Term="SAP__common.QuickInfo" String="日期"/>
-                <Annotation Term="SAP__core.Computed"/>
-                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DATUM"/>
-            </Annotations>
-            <Annotations Target="SAP__self.Container/PurchaseReport">
-                <Annotation Term="SAP__capabilities.NavigationRestrictions">
+                  </PropertyValue>
+                  <PropertyValue Property="UpdateRestrictions">
                     <Record>
-                        <PropertyValue Property="RestrictedProperties">
-                            <Collection>
-                                <Record>
-                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Set"/>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="UpdateRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Updatable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="DeleteRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Deletable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
+                      <PropertyValue Property="Updatable" Bool="false"/>
                     </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                  </PropertyValue>
+                  <PropertyValue Property="DeleteRestrictions">
                     <Record>
-                        <PropertyValue Property="Searchable" Bool="false"/>
+                      <PropertyValue Property="Deletable" Bool="false"/>
                     </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.FilterRestrictions">
-                    <Record>
-                        <PropertyValue Property="NonFilterableProperties">
-                            <Collection>
-                                <PropertyPath>p_plant</PropertyPath>
-                                <PropertyPath>p_material</PropertyPath>
-                                <PropertyPath>p_date_from</PropertyPath>
-                                <PropertyPath>p_date_to</PropertyPath>
-                                <PropertyPath>p_release_from</PropertyPath>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.SortRestrictions">
-                    <Record>
-                        <PropertyValue Property="NonSortableProperties">
-                            <Collection>
-                                <PropertyPath>p_plant</PropertyPath>
-                                <PropertyPath>p_material</PropertyPath>
-                                <PropertyPath>p_date_from</PropertyPath>
-                                <PropertyPath>p_date_to</PropertyPath>
-                                <PropertyPath>p_release_from</PropertyPath>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.ReadRestrictions">
-                    <Record>
-                        <PropertyValue Property="Readable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.InsertRestrictions">
-                    <Record>
-                        <PropertyValue Property="Insertable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.DeleteRestrictions">
-                    <Record>
-                        <PropertyValue Property="Deletable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.UpdateRestrictions">
-                    <Record>
-                        <PropertyValue Property="Updatable" Bool="false"/>
-                        <PropertyValue Property="NonUpdatableNavigationProperties">
-                            <Collection>
-                                <PropertyPath>Set</PropertyPath>
-                            </Collection>
-                        </PropertyValue>
-                        <PropertyValue Property="QueryOptions">
-                            <Record>
-                                <PropertyValue Property="SelectSupported" Bool="true"/>
-                            </Record>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportParameters">
-                <Annotation Term="SAP__common.ResultContext"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/RowNumber">
-                <Annotation Term="SAP__common.Label" String="行号"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/CompanyCode">
-                <Annotation Term="SAP__common.Label" String="公司代码"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/Plant">
-                <Annotation Term="SAP__common.Label" String="工厂"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/Material">
-                <Annotation Term="SAP__common.Label" String="物料"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/Partner">
-                <Annotation Term="SAP__common.Label" String="客户"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/DateFrom">
-                <Annotation Term="SAP__common.Label" String="业务日期"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/DateTo">
-                <Annotation Term="SAP__common.Label" String="日期至"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/YearWeek">
-                <Annotation Term="SAP__common.Label" String="年周"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/PostingDate">
-                <Annotation Term="SAP__common.Label" String="过账日期"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/Metric">
-                <Annotation Term="SAP__common.Label" String="指标代码"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/MetricText">
-                <Annotation Term="SAP__common.Label" String="指标"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/Quantity">
-                <Annotation Term="SAP__common.Label" String="数量"/>
-                <Annotation Term="SAP__measures.Unit" Path="Unit"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/Unit">
-                <Annotation Term="SAP__common.IsUnit"/>
-                <Annotation Term="SAP__common.Label" String="数量单位"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/SourceUnit">
-                <Annotation Term="SAP__common.IsUnit"/>
-                <Annotation Term="SAP__common.Label" String="来源辅助单位"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/ReleaseType">
-                <Annotation Term="SAP__common.Label" String="发布类型"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/SalesOrganization">
-                <Annotation Term="SAP__common.Label" String="销售组织"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/DistributionChannel">
-                <Annotation Term="SAP__common.Label" String="分销渠道"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/Division">
-                <Annotation Term="SAP__common.Label" String="产品组"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/OrganizationDivision">
-                <Annotation Term="SAP__common.Label" String="组织产品组"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/ScheduleLineCategory">
-                <Annotation Term="SAP__common.Label" String="计划行类别"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/IsRequested">
-                <Annotation Term="SAP__common.Label" String="需求行标识"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/IsConfirmed">
-                <Annotation Term="SAP__common.Label" String="确认行标识"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/SourceRows">
-                <Annotation Term="SAP__common.Label" String="来源行数"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/HasIssue">
-                <Annotation Term="SAP__common.Label" String="异常标识"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType/StatusText">
-                <Annotation Term="SAP__common.Label" String="口径说明"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportType">
-                <Annotation Term="SAP__common.Label" String="发货报表：销售每日汇总"/>
-                <Annotation Term="SAP__UI.LineItem">
-                    <Collection>
-                        <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Value" Path="Material"/>
-                        </Record>
-                        <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Value" Path="Plant"/>
-                        </Record>
-                        <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Value" Path="Partner"/>
-                        </Record>
-                        <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Value" Path="DateFrom"/>
-                        </Record>
-                        <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Value" Path="YearWeek"/>
-                        </Record>
-                        <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Value" Path="MetricText"/>
-                        </Record>
-                        <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Value" Path="Quantity"/>
-                        </Record>
-                        <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Value" Path="Unit"/>
-                        </Record>
-                    </Collection>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="SAP__self.Container">
-                <Annotation Term="SAP__CodeList.UnitsOfMeasure">
-                    <Record>
-                        <PropertyValue Property="Url" String="../../../../default/iwbep/common/0001/$metadata"/>
-                        <PropertyValue Property="CollectionPath" String="UnitsOfMeasure"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
-                <Annotation Term="SAP__capabilities.FilterFunctions">
-                    <Collection>
-                        <String>eq</String>
-                        <String>ne</String>
-                        <String>gt</String>
-                        <String>ge</String>
-                        <String>lt</String>
-                        <String>le</String>
-                        <String>and</String>
-                        <String>or</String>
-                        <String>contains</String>
-                        <String>startswith</String>
-                        <String>endswith</String>
-                        <String>any</String>
-                        <String>all</String>
-                    </Collection>
-                </Annotation>
-                <Annotation Term="SAP__support.TechnicalInfoLinks">
-                    <Record>
-                        <PropertyValue Property="Url" String="../../../../default/iwbep/common/0001/$metadata"/>
-                        <PropertyValue Property="FunctionImport" String="GetTechnicalInfoLinks"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.SupportedFormats">
-                    <Collection>
-                        <String>application/json</String>
-                        <String>application/pdf</String>
-                    </Collection>
-                </Annotation>
-                <Annotation Term="SAP__PDF.Features">
-                    <Record>
-                        <PropertyValue Property="DocumentDescriptionReference" String="../../../../default/iwbep/common/0001/$metadata"/>
-                        <PropertyValue Property="DocumentDescriptionCollection" String="MyDocumentDescriptions"/>
-                        <PropertyValue Property="ArchiveFormat" Bool="true"/>
-                        <PropertyValue Property="Border" Bool="true"/>
-                        <PropertyValue Property="CoverPage" Bool="true"/>
-                        <PropertyValue Property="FitToPage" Bool="true"/>
-                        <PropertyValue Property="FontName" Bool="true"/>
-                        <PropertyValue Property="FontSize" Bool="true"/>
-                        <PropertyValue Property="HeaderFooter" Bool="true"/>
-                        <PropertyValue Property="IANATimezoneFormat" Bool="true"/>
-                        <PropertyValue Property="Margin" Bool="true"/>
-                        <PropertyValue Property="Padding" Bool="true"/>
-                        <PropertyValue Property="ResultSizeDefault" Int="20000"/>
-                        <PropertyValue Property="ResultSizeMaximum" Int="20000"/>
-                        <PropertyValue Property="Signature" Bool="true"/>
-                        <PropertyValue Property="TextDirectionLayout" Bool="true"/>
-                        <PropertyValue Property="Treeview" Bool="true"/>
-                        <PropertyValue Property="UploadToFileShare" Bool="true"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.BatchSupport">
-                    <Record>
-                        <PropertyValue Property="SupportedFormats">
-                            <Collection>
-                                <String>application/json</String>
-                                <String>multipart/mixed</String>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.KeyAsSegmentSupported"/>
-                <Annotation Term="SAP__capabilities.AsynchronousRequestsSupported"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportParameters/p_plant">
-                <Annotation Term="SAP__common.Label" String="工厂"/>
-                <Annotation Term="SAP__common.QuickInfo" String="工厂"/>
-                <Annotation Term="SAP__core.Computed"/>
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.ValueListReferences">
-                    <Collection>
-                        <String>../../../../srvd_f4/sap/i_plantstdvh/0001;ps='srvd-zui_shipment_report-0001';va='com.sap.gateway.srvd.zui_shipment_report.v0001.et-$parameter$zce_shipmentsales.p_plant'/$metadata</String>
-                    </Collection>
-                </Annotation>
-                <Annotation Term="SAP__common.Heading" String="工厂"/>
-                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=WERKS_D"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportParameters/p_material">
-                <Annotation Term="SAP__common.Label" String="物料"/>
-                <Annotation Term="SAP__common.QuickInfo" String="物料编号"/>
-                <Annotation Term="SAP__core.Computed"/>
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.ValueListReferences">
-                    <Collection>
-                        <String>../../../../srvd_f4/sap/i_productstdvh/0001;ps='srvd-zui_shipment_report-0001';va='com.sap.gateway.srvd.zui_shipment_report.v0001.et-$parameter$zce_shipmentsales.p_material'/$metadata</String>
-                    </Collection>
-                </Annotation>
-                <Annotation Term="SAP__common.Heading" String="物料"/>
-                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=MATNR"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportParameters/p_date_from">
-                <Annotation Term="SAP__common.Label" String="查询开始日期"/>
-                <Annotation Term="SAP__common.QuickInfo" String="日期"/>
-                <Annotation Term="SAP__core.Computed"/>
-                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DATUM"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportParameters/p_date_to">
-                <Annotation Term="SAP__common.Label" String="查询结束日期"/>
-                <Annotation Term="SAP__common.QuickInfo" String="日期"/>
-                <Annotation Term="SAP__core.Computed"/>
-                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DATUM"/>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportParameters/p_release_from">
-                <Annotation Term="SAP__common.Label" String="采购发布创建起始日期"/>
-                <Annotation Term="SAP__common.QuickInfo" String="日期"/>
-                <Annotation Term="SAP__core.Computed"/>
-                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=DATUM"/>
-            </Annotations>
-            <Annotations Target="SAP__self.Container/SalesReport">
-                <Annotation Term="SAP__capabilities.NavigationRestrictions">
-                    <Record>
-                        <PropertyValue Property="RestrictedProperties">
-                            <Collection>
-                                <Record>
-                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Set"/>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="UpdateRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Updatable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                    <PropertyValue Property="DeleteRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Deletable" Bool="false"/>
-                                        </Record>
-                                    </PropertyValue>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.SearchRestrictions">
-                    <Record>
-                        <PropertyValue Property="Searchable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.FilterRestrictions">
-                    <Record>
-                        <PropertyValue Property="NonFilterableProperties">
-                            <Collection>
-                                <PropertyPath>p_plant</PropertyPath>
-                                <PropertyPath>p_material</PropertyPath>
-                                <PropertyPath>p_date_from</PropertyPath>
-                                <PropertyPath>p_date_to</PropertyPath>
-                                <PropertyPath>p_release_from</PropertyPath>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.SortRestrictions">
-                    <Record>
-                        <PropertyValue Property="NonSortableProperties">
-                            <Collection>
-                                <PropertyPath>p_plant</PropertyPath>
-                                <PropertyPath>p_material</PropertyPath>
-                                <PropertyPath>p_date_from</PropertyPath>
-                                <PropertyPath>p_date_to</PropertyPath>
-                                <PropertyPath>p_release_from</PropertyPath>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.ReadRestrictions">
-                    <Record>
-                        <PropertyValue Property="Readable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.InsertRestrictions">
-                    <Record>
-                        <PropertyValue Property="Insertable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.DeleteRestrictions">
-                    <Record>
-                        <PropertyValue Property="Deletable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.UpdateRestrictions">
-                    <Record>
-                        <PropertyValue Property="Updatable" Bool="false"/>
-                        <PropertyValue Property="NonUpdatableNavigationProperties">
-                            <Collection>
-                                <PropertyPath>Set</PropertyPath>
-                            </Collection>
-                        </PropertyValue>
-                        <PropertyValue Property="QueryOptions">
-                            <Record>
-                                <PropertyValue Property="SelectSupported" Bool="true"/>
-                            </Record>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="SAP__self.SalesReportParameters">
-                <Annotation Term="SAP__common.ResultContext"/>
-            </Annotations>
-            <Annotations Target="SAP__self.ProductValueHelpType/Product">
-                <Annotation Term="SAP__common.Text" Path="Product_Text"/>
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Label" String="产品"/>
-                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=PRODUCTNUMBER"/>
-            </Annotations>
-            <Annotations Target="SAP__self.ProductValueHelpType/Product_Text">
-                <Annotation Term="SAP__core.Computed"/>
-                <Annotation Term="SAP__common.Label" String="产品描述"/>
-                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=PRODUCTDESCRIPTION"/>
-            </Annotations>
-            <Annotations Target="SAP__self.ProductValueHelpType/ProductExternalID">
-                <Annotation Term="SAP__common.Label" String="外部产品标识"/>
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Heading" String="物料"/>
-                <Annotation Term="SAP__common.QuickInfo" String="物料编号的外部表示"/>
-                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=MATNR_EXTERNAL"/>
-            </Annotations>
-            <Annotations Target="SAP__self.ProductValueHelpType">
-                <Annotation Term="SAP__common.Label" String="产品值帮助"/>
-            </Annotations>
-            <Annotations Target="SAP__self.Container/ProductValueHelp">
-                <Annotation Term="SAP__capabilities.SearchRestrictions">
-                    <Record>
-                        <PropertyValue Property="Searchable" Bool="true"/>
-                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group "/>
-                        <PropertyValue Property="SearchSyntax" String="https://url.sap/odata-search"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.InsertRestrictions">
-                    <Record>
-                        <PropertyValue Property="Insertable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.DeleteRestrictions">
-                    <Record>
-                        <PropertyValue Property="Deletable" Bool="false"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__capabilities.UpdateRestrictions">
-                    <Record>
-                        <PropertyValue Property="Updatable" Bool="false"/>
-                        <PropertyValue Property="QueryOptions">
-                            <Record>
-                                <PropertyValue Property="SelectSupported" Bool="true"/>
-                            </Record>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/RowNumber">
-                <Annotation Term="SAP__common.Label" String="行号"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/CompanyCode">
-                <Annotation Term="SAP__common.Label" String="公司代码"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/Plant">
-                <Annotation Term="SAP__common.Label" String="工厂"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/Material">
-                <Annotation Term="SAP__common.Label" String="物料"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/Partner">
-                <Annotation Term="SAP__common.Label" String="供应商"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/DateFrom">
-                <Annotation Term="SAP__common.Label" String="业务日期"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/DateTo">
-                <Annotation Term="SAP__common.Label" String="日期至"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/YearWeek">
-                <Annotation Term="SAP__common.Label" String="年周"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/PostingDate">
-                <Annotation Term="SAP__common.Label" String="过账日期"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/Metric">
-                <Annotation Term="SAP__common.Label" String="指标代码"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/MetricText">
-                <Annotation Term="SAP__common.Label" String="指标"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/Quantity">
-                <Annotation Term="SAP__common.Label" String="数量"/>
-                <Annotation Term="SAP__measures.Unit" Path="Unit"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/Unit">
-                <Annotation Term="SAP__common.IsUnit"/>
-                <Annotation Term="SAP__common.Label" String="数量单位"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/SourceUnit">
-                <Annotation Term="SAP__common.IsUnit"/>
-                <Annotation Term="SAP__common.Label" String="来源辅助单位"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/ReleaseType">
-                <Annotation Term="SAP__common.Label" String="发布类型"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/SalesOrganization">
-                <Annotation Term="SAP__common.Label" String="销售组织"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/DistributionChannel">
-                <Annotation Term="SAP__common.Label" String="分销渠道"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/Division">
-                <Annotation Term="SAP__common.Label" String="产品组"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/OrganizationDivision">
-                <Annotation Term="SAP__common.Label" String="组织产品组"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/ScheduleLineCategory">
-                <Annotation Term="SAP__common.Label" String="计划行类别"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/IsRequested">
-                <Annotation Term="SAP__common.Label" String="需求行标识"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/IsConfirmed">
-                <Annotation Term="SAP__common.Label" String="确认行标识"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/SourceRows">
-                <Annotation Term="SAP__common.Label" String="来源行数"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/HasIssue">
-                <Annotation Term="SAP__common.Label" String="异常标识"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType/StatusText">
-                <Annotation Term="SAP__common.Label" String="口径说明"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PurchaseReportType">
-                <Annotation Term="SAP__common.Label" String="发货报表：采购每日汇总"/>
-                <Annotation Term="SAP__UI.LineItem">
-                    <Collection>
-                        <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Value" Path="Material"/>
-                        </Record>
-                        <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Value" Path="Plant"/>
-                        </Record>
-                        <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Value" Path="Partner"/>
-                        </Record>
-                        <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Value" Path="DateFrom"/>
-                        </Record>
-                        <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Value" Path="YearWeek"/>
-                        </Record>
-                        <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Value" Path="MetricText"/>
-                        </Record>
-                        <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Value" Path="Quantity"/>
-                        </Record>
-                        <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Value" Path="Unit"/>
-                        </Record>
-                    </Collection>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="SAP__self.PlantValueHelpType/PlantName">
-                <Annotation Term="SAP__common.Label" String="工厂名称"/>
-            </Annotations>
-        </Schema>
-    </edmx:DataServices>
+                  </PropertyValue>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.SearchRestrictions">
+          <Record>
+            <PropertyValue Property="Searchable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.FilterRestrictions">
+          <Record>
+            <PropertyValue Property="NonFilterableProperties">
+              <Collection>
+                <PropertyPath>p_plant</PropertyPath>
+                <PropertyPath>p_date_from</PropertyPath>
+                <PropertyPath>p_date_to</PropertyPath>
+                <PropertyPath>p_release_from</PropertyPath>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.SortRestrictions">
+          <Record>
+            <PropertyValue Property="NonSortableProperties">
+              <Collection>
+                <PropertyPath>p_plant</PropertyPath>
+                <PropertyPath>p_date_from</PropertyPath>
+                <PropertyPath>p_date_to</PropertyPath>
+                <PropertyPath>p_release_from</PropertyPath>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.ReadRestrictions">
+          <Record>
+            <PropertyValue Property="Readable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+            <PropertyValue Property="NonUpdatableNavigationProperties">
+              <Collection>
+                <PropertyPath>Set</PropertyPath>
+              </Collection>
+            </PropertyValue>
+            <PropertyValue Property="QueryOptions">
+              <Record>
+                <PropertyValue Property="SelectSupported" Bool="true"/>
+              </Record>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="SAP__self.SalesReportParameters">
+        <Annotation Term="SAP__common.ResultContext"/>
+      </Annotations>
+      <Annotations Target="SAP__self.ProductValueHelpType/Product">
+        <Annotation Term="SAP__common.Text" Path="Product_Text"/>
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__common.Label" String="产品"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=PRODUCTNUMBER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.ProductValueHelpType/Product_Text">
+        <Annotation Term="SAP__core.Computed"/>
+        <Annotation Term="SAP__common.Label" String="产品描述"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=PRODUCTDESCRIPTION"/>
+      </Annotations>
+      <Annotations Target="SAP__self.ProductValueHelpType/ProductExternalID">
+        <Annotation Term="SAP__common.Label" String="外部产品标识"/>
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__common.Heading" String="物料"/>
+        <Annotation Term="SAP__common.QuickInfo" String="物料编号的外部表示"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=MATNR_EXTERNAL"/>
+      </Annotations>
+      <Annotations Target="SAP__self.ProductValueHelpType">
+        <Annotation Term="SAP__common.Label" String="产品值帮助"/>
+      </Annotations>
+      <Annotations Target="SAP__self.Container/ProductValueHelp">
+        <Annotation Term="SAP__capabilities.SearchRestrictions">
+          <Record>
+            <PropertyValue Property="Searchable" Bool="true"/>
+            <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group "/>
+            <PropertyValue Property="SearchSyntax" String="https://url.sap/odata-search"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+            <PropertyValue Property="QueryOptions">
+              <Record>
+                <PropertyValue Property="SelectSupported" Bool="true"/>
+              </Record>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/Customer">
+        <Annotation Term="SAP__common.Text" Path="BPCustomerName"/>
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__common.Label" String="客户"/>
+        <Annotation Term="SAP__common.QuickInfo" String="客户编号"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=KUNNR"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/OrganizationBPName1">
+        <Annotation Term="SAP__common.Label" String="客户名称 1"/>
+        <Annotation Term="SAP__common.Heading" String="名称"/>
+        <Annotation Term="SAP__common.QuickInfo" String="名称"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=NAME1_GP"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/BusinessPartnerName1">
+        <Annotation Term="SAP__common.Label" String="业务伙伴名称 1"/>
+        <Annotation Term="SAP__common.Heading" String="名称"/>
+        <Annotation Term="SAP__common.QuickInfo" String="名称 1"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=AD_NAME1"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/OrganizationBPName2">
+        <Annotation Term="SAP__common.Label" String="客户名称 2"/>
+        <Annotation Term="SAP__common.Heading" String="姓名 2"/>
+        <Annotation Term="SAP__common.QuickInfo" String="姓名 2"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=NAME2_GP"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/BusinessPartnerName2">
+        <Annotation Term="SAP__common.Label" String="业务伙伴名称 2"/>
+        <Annotation Term="SAP__common.Heading" String="名称 2"/>
+        <Annotation Term="SAP__common.QuickInfo" String="名称 2"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/Country">
+        <Annotation Term="SAP__common.Label" String="国家/地区"/>
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__common.Heading" String="国家/地区代码"/>
+        <Annotation Term="SAP__common.QuickInfo" String="国家/地区代码"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=LAND1_GP"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/CityName">
+        <Annotation Term="SAP__common.Label" String="城市"/>
+        <Annotation Term="SAP__common.Heading" String="城市"/>
+        <Annotation Term="SAP__common.QuickInfo" String="城市"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ORT01_GP"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/BPAddrCityName">
+        <Annotation Term="SAP__common.Label" String="业务伙伴地址城市"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Heading" String="城市"/>
+        <Annotation Term="SAP__common.QuickInfo" String="城市"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=AD_CITY1"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/StreetName">
+        <Annotation Term="SAP__common.Label" String="街道"/>
+        <Annotation Term="SAP__common.Heading" String="街道"/>
+        <Annotation Term="SAP__common.QuickInfo" String="街道和门牌号"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=STRAS_GP"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/BPAddrStreetName">
+        <Annotation Term="SAP__common.Label" String="业务伙伴地址街道"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Heading" String="街道"/>
+        <Annotation Term="SAP__common.QuickInfo" String="街道"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=AD_STREET"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/PostalCode">
+        <Annotation Term="SAP__common.Label" String="邮政编码"/>
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__common.Heading" String="邮政编码"/>
+        <Annotation Term="SAP__common.QuickInfo" String="邮政编码"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=PSTLZ"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/CustomerName">
+        <Annotation Term="SAP__common.Label" String="客户名称"/>
+        <Annotation Term="SAP__common.Heading" String="客户"/>
+        <Annotation Term="SAP__common.QuickInfo" String="客户名称"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/BPCustomerName">
+        <Annotation Term="SAP__common.Label" String="业务伙伴客户名称"/>
+        <Annotation Term="SAP__common.Heading" String="客户"/>
+        <Annotation Term="SAP__common.QuickInfo" String="客户名称"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/CustomerAccountGroup">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="客户科目组"/>
+        <Annotation Term="SAP__common.Heading" String="科目组"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=KTOKD"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/AuthorizationGroup">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="权限"/>
+        <Annotation Term="SAP__common.Heading" String="AuGr"/>
+        <Annotation Term="SAP__common.QuickInfo" String="权限组"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BRGRU"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/IsBusinessPurposeCompleted">
+        <Annotation Term="SAP__common.Label" String="目的完成标志"/>
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Heading" String="业务目的完成标志"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务目的完成标志"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=CVP_XBLCK"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/BusinessPartner">
+        <Annotation Term="SAP__common.Label" String="业务伙伴"/>
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__common.Heading" String="业务伙伴"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴编号"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_PARTNER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/BusinessPartnerType">
+        <Annotation Term="SAP__common.Label" String="业务伙伴类型"/>
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Heading" String="类型"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴类型"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_BPKIND"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/DataControllerSet">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器集"/>
+        <Annotation Term="SAP__common.Heading" String="数据控制器集标志"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器集标志"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_XDCSET"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/DataController1">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/DataController2">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/DataController3">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/DataController4">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/DataController5">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/DataController6">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/DataController7">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/DataController8">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/DataController9">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/DataController10">
+        <Annotation Term="SAP__common.IsUpperCase"/>
+        <Annotation Term="SAP__UI.HiddenFilter"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="数据控制器"/>
+        <Annotation Term="SAP__common.QuickInfo" String="业务伙伴：数据控制器（仅内部使用）"/>
+        <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=BU_DATA_CONTROLLER"/>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType">
+        <Annotation Term="SAP__common.Label" String="客户"/>
+      </Annotations>
+      <Annotations Target="SAP__self.Container/CustomerValueHelp">
+        <Annotation Term="SAP__capabilities.SearchRestrictions">
+          <Record>
+            <PropertyValue Property="Searchable" Bool="true"/>
+            <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group "/>
+            <PropertyValue Property="SearchSyntax" String="https://url.sap/odata-search"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="SAP__capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+            <PropertyValue Property="QueryOptions">
+              <Record>
+                <PropertyValue Property="SelectSupported" Bool="true"/>
+              </Record>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/RowNumber">
+        <Annotation Term="SAP__common.Label" String="行号"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/CompanyCode">
+        <Annotation Term="SAP__common.Label" String="公司代码"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/Plant">
+        <Annotation Term="SAP__common.Label" String="工厂"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/Material">
+        <Annotation Term="SAP__common.Label" String="物料"/>
+        <Annotation Term="SAP__common.ValueListReferences">
+          <Collection>
+            <String>../../../../srvd_f4/sap/i_productstdvh/0001;ps='srvd-zui_shipment_report-0001';va='com.sap.gateway.srvd.zui_shipment_report.v0001.et-zce_shipmentpurchase.material'/$metadata</String>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/Partner">
+        <Annotation Term="SAP__common.Label" String="供应商"/>
+        <Annotation Term="SAP__common.ValueListReferences">
+          <Collection>
+            <String>../../../../srvd_f4/sap/i_supplier_vh/0001;ps='srvd-zui_shipment_report-0001';va='com.sap.gateway.srvd.zui_shipment_report.v0001.et-zce_shipmentpurchase.partner'/$metadata</String>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/DateFrom">
+        <Annotation Term="SAP__common.Label" String="业务日期"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/DateTo">
+        <Annotation Term="SAP__common.Label" String="日期至"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/YearWeek">
+        <Annotation Term="SAP__common.Label" String="年周"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/PostingDate">
+        <Annotation Term="SAP__common.Label" String="过账日期"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/Metric">
+        <Annotation Term="SAP__common.Label" String="指标代码"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/MetricText">
+        <Annotation Term="SAP__common.Label" String="指标"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/Quantity">
+        <Annotation Term="SAP__common.Label" String="数量"/>
+        <Annotation Term="SAP__measures.Unit" Path="Unit"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/Unit">
+        <Annotation Term="SAP__common.IsUnit"/>
+        <Annotation Term="SAP__common.Label" String="数量单位"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/SourceUnit">
+        <Annotation Term="SAP__common.IsUnit"/>
+        <Annotation Term="SAP__common.Label" String="来源辅助单位"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/ReleaseType">
+        <Annotation Term="SAP__common.Label" String="发布类型"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/SalesOrganization">
+        <Annotation Term="SAP__common.Label" String="销售组织"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/DistributionChannel">
+        <Annotation Term="SAP__common.Label" String="分销渠道"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/Division">
+        <Annotation Term="SAP__common.Label" String="产品组"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/OrganizationDivision">
+        <Annotation Term="SAP__common.Label" String="组织产品组"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/ScheduleLineCategory">
+        <Annotation Term="SAP__common.Label" String="计划行类别"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/IsRequested">
+        <Annotation Term="SAP__common.Label" String="需求行标识"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/IsConfirmed">
+        <Annotation Term="SAP__common.Label" String="确认行标识"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/SourceRows">
+        <Annotation Term="SAP__common.Label" String="来源行数"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/HasIssue">
+        <Annotation Term="SAP__common.Label" String="异常标识"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType/StatusText">
+        <Annotation Term="SAP__common.Label" String="口径说明"/>
+        <Annotation Term="SAP__UI.Hidden"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PurchaseReportType">
+        <Annotation Term="SAP__common.Label" String="发货报表：采购每日汇总"/>
+        <Annotation Term="SAP__UI.LineItem">
+          <Collection>
+            <Record Type="SAP__UI.DataField">
+              <PropertyValue Property="Value" Path="Material"/>
+            </Record>
+            <Record Type="SAP__UI.DataField">
+              <PropertyValue Property="Value" Path="Plant"/>
+            </Record>
+            <Record Type="SAP__UI.DataField">
+              <PropertyValue Property="Value" Path="Partner"/>
+            </Record>
+            <Record Type="SAP__UI.DataField">
+              <PropertyValue Property="Value" Path="DateFrom"/>
+            </Record>
+            <Record Type="SAP__UI.DataField">
+              <PropertyValue Property="Value" Path="YearWeek"/>
+            </Record>
+            <Record Type="SAP__UI.DataField">
+              <PropertyValue Property="Value" Path="MetricText"/>
+            </Record>
+            <Record Type="SAP__UI.DataField">
+              <PropertyValue Property="Value" Path="Quantity"/>
+            </Record>
+            <Record Type="SAP__UI.DataField">
+              <PropertyValue Property="Value" Path="Unit"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="SAP__UI.SelectionFields">
+          <Collection>
+            <PropertyPath>Material</PropertyPath>
+            <PropertyPath>Partner</PropertyPath>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="SAP__self.CustomerValueHelpType/IsCompetitor">
+        <Annotation Term="SAP__UI.Hidden"/>
+        <Annotation Term="SAP__common.Label" String="竞争者"/>
+        <Annotation Term="SAP__common.Heading" String="C"/>
+        <Annotation Term="SAP__common.QuickInfo" String="指示符: 竞争者"/>
+      </Annotations>
+      <Annotations Target="SAP__self.PlantValueHelpType/PlantName">
+        <Annotation Term="SAP__common.Label" String="工厂名称"/>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
 </edmx:Edmx>

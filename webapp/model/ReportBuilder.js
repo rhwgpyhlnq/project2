@@ -42,10 +42,11 @@ sap.ui.define([], function () {
     function build(purchases, sales, options) {
         const settings = options || {};
         const customersFilter = parseCodes(settings.customers);
-        const supplierFilter = code(settings.supplier);
+        const suppliersFilter = parseCodes(settings.suppliers || settings.supplier);
+        const materialsFilter = (settings.materials || []).map(String);
         const start = monday(settings.referenceDate);
-        const selectedPurchases = purchases.filter(r => !supplierFilter || code(r.Partner) === supplierFilter);
-        const selectedSales = sales.filter(r => !customersFilter.length || customersFilter.includes(code(r.Partner)));
+        const selectedPurchases = purchases.filter(r => (!suppliersFilter.length || suppliersFilter.includes(code(r.Partner))) && (!materialsFilter.length || materialsFilter.includes(r.Material)));
+        const selectedSales = sales.filter(r => (!customersFilter.length || customersFilter.includes(code(r.Partner))) && (!materialsFilter.length || materialsFilter.includes(r.Material)));
         const customerIds = Array.from(new Set(selectedSales.map(r => String(r.Partner).trim()))).sort();
         const customers = customerIds.map((id, index) => ({ id: id, key: "c" + index }));
         const keys = new Map(customers.map(c => [c.id, c.key]));

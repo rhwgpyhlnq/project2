@@ -67,8 +67,8 @@ test("fails explicitly on incompatible granularity or malformed quantities", () 
     assert.throws(() => builder.build([], [row({ Unit: "" })], options), /单位/);
 });
 test("OData paths use Edm.Date literals and escaped parameter strings", () => {
-    const path = service.path("SalesReport", { plant: "1310", material: "AB'C", dateFrom: "2026-10-19", dateTo: "2026-11-01", releaseFrom: "2026-01-01" });
-    assert.equal(path, "/SalesReport(p_plant='1310',p_material='AB''C',p_date_from=2026-10-19,p_date_to=2026-11-01,p_release_from=2026-01-01)/Set");
+    const path = service.path("SalesReport", { plant: "13'0", materials: ["AB'C"], dateFrom: "2026-10-19", dateTo: "2026-11-01", releaseFrom: "2026-01-01" });
+    assert.equal(path, "/SalesReport(p_plant='13''0',p_date_from=2026-10-19,p_date_to=2026-11-01,p_release_from=2026-01-01)/Set");
 });
 test("loads every server page and destroys bindings even on a failed request", async () => {
     let destroyed = false;
@@ -80,7 +80,7 @@ test("loads every server page and destroys bindings even on a failed request", a
         },
         isLengthFinal: () => false, destroy: () => { destroyed = true; }
     };
-    const filters = { plant: "1310", material: "A", dateFrom: "2026-10-19", dateTo: "2026-11-01", releaseFrom: "2026-01-01" };
+    const filters = { plant: "1310", materials: ["A"], dateFrom: "2026-10-19", dateTo: "2026-11-01", releaseFrom: "2026-01-01" };
     const rows = await service.read({ bindList: () => binding }, "PurchaseReport", filters);
     assert.equal(rows.length, 701);
     assert.deepEqual(offsets, [0, 500]);
@@ -89,4 +89,67 @@ test("loads every server page and destroys bindings even on a failed request", a
     binding.requestContexts = async () => { throw new Error("offline"); };
     await assert.rejects(service.read({ bindList: () => binding }, "PurchaseReport", filters), /offline/);
     assert.equal(destroyed, true);
+});
+
+
+test("server filters OR multiple values, AND dimensions, escape quotes and keep business partners separate", () => {
+    const filters = { materials: ["PECU001", "AB'C", "PECU001"], suppliers: ["0001000411", "0001000412"], customers: ["0013100001"] };
+    assert.equal(service.selectionFilter("PurchaseReport", filters), "(Material eq 'PECU001' or Material eq 'AB''C') and (Partner eq '0001000411' or Partner eq '0001000412')");
+    assert.equal(service.selectionFilter("SalesReport", filters), "(Material eq 'PECU001' or Material eq 'AB''C') and (Partner eq '0013100001')");
+    assert.equal(service.selectionFilter("SalesReport", { materials: ["A"], customers: [] }), "(Material eq 'A')");
+    assert.throws(() => service.selectionFilter("SalesReport", { materials: [] }), /至少一个物料/);
+});
+
+test("multi-material and multi-supplier results keep materials and units separate", () => {
+    const result = builder.build([
+        row({ Material: "A", Partner: "0001000411", Quantity: "2" }),
+        row({ Material: "A", Partner: "0001000412", Quantity: "3" }),
+        row({ Material: "B", Partner: "0001000412", Quantity: "7" }),
+        row({ Material: "C", Partner: "0001000411", Quantity: "100" }),
+        row({ Material: "A", Partner: "0001000413", Quantity: "200" })
+    ], [row({ Material: "A", Quantity: "4" }), row({ Material: "B", Quantity: "8" }), row({ Material: "B", Partner: "0013100002", Quantity: "16" })],
+    { referenceDate: "2026-10-19", materials: ["A", "B"], suppliers: ["0001000411", "0001000412"], customers: ["0013100001"] });
+    assert.equal(result.rows.length, 2);
+    assert.equal(result.rows[0].purchasePlan, "5");
+    assert.equal(result.rows[1].purchasePlan, "7");
+    assert.equal(result.rows[0].salesPlan, "4");
+    assert.equal(result.rows[1].salesPlan, "8");
+});
+
+test("multi-input commits pending values, deduplicates codes and removes selected tokens", () => {
+    let controller;
+    vm.runInNewContext(fs.readFileSync("webapp/controller/shipment.controller.js", "utf8"), {
+        sap: { ui: { define: (deps, factory) => {
+            controller = factory(...deps.map(name => name === "sap/ui/core/mvc/Controller" ? { extend: (_name, methods) => methods } : undefined));
+        } } }
+    });
+    const data = { materials: [{ key: "A", text: "A" }], suppliers: [], customers: [] };
+    const model = { getProperty: path => data[path.slice(1)], setProperty: (path, value) => { data[path.slice(1)] = value; } };
+    controller.getView = () => ({ getModel: () => model });
+    const input = (id, value) => ({ getId: () => "view--" + id, getValue: () => value, setValue: newValue => { value = newValue; }, setValueState: () => {} });
+    const material = input("material", "A，B;C B");
+    controller._commitSelectionInput(material);
+    assert.equal(data.materials.map(item => item.key).join(","), "A,B,C");
+    assert.equal(material.getValue(), "");
+    controller._commitSelectionInput(input("customers", "13100001,0013100001 13100002"));
+    assert.equal(data.customers.map(item => item.key).join(","), "0013100001,0013100002");
+    controller._commitSelectionInput(input("supplier", "1000411;1000412"));
+    assert.equal(data.suppliers.map(item => item.key).join(","), "0001000411,0001000412");
+    controller.onTokenUpdate({ getSource: () => material, getParameter: name => name === "type" ? "removed" : [{ getKey: () => "B" }], preventDefault: () => {} });
+    assert.equal(data.materials.map(item => item.key).join(","), "A,C");
+    assert.throws(() => controller._commitSelectionInput(input("customers", "12345678901")), /编码过长/);
+});
+
+test("report reads send all selected values to the correct backend entity", async () => {
+    const calls = [];
+    const model = { bindList: (path, _context, _sorters, _filters, parameters) => {
+        calls.push({ path, parameters });
+        return { requestContexts: async () => [], destroy: () => {} };
+    } };
+    const filters = { plant: "1310", materials: ["A", "B"], suppliers: ["0001000411"], customers: ["0013100001", "0013100002"], dateFrom: "2026-10-26", dateTo: "2026-11-22", releaseFrom: "2026-01-01" };
+    await service.read(model, "PurchaseReport", filters);
+    await service.read(model, "SalesReport", filters);
+    assert.equal(calls[0].parameters.$filter, "(Material eq 'A' or Material eq 'B') and (Partner eq '0001000411')");
+    assert.equal(calls[1].parameters.$filter, "(Material eq 'A' or Material eq 'B') and (Partner eq '0013100001' or Partner eq '0013100002')");
+    assert.ok(calls.every(call => !call.path.includes("p_material")));
 });

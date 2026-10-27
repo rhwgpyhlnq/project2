@@ -9,7 +9,7 @@
                         <VBox><Label text="工厂" required="true" labelFor="plant" />
                             <Input id="plant" value="{filters>/plant}" showValueHelp="true" valueHelpRequest=".onValueHelp" maxLength="4" /></VBox>
                         <VBox><Label text="ECU 物料" required="true" labelFor="material" />
-                            <Input id="material" value="{filters>/material}" showValueHelp="true" valueHelpRequest=".onValueHelp" /></VBox>
+                            <MultiInput id="material" width="100%" tokens="{filters>/materials}" showValueHelp="true" valueHelpRequest=".onValueHelp" change=".onSelectionInputChange" submit=".onSelectionInputChange" tokenUpdate=".onTokenUpdate" placeholder="选择或输入多个编码"><tokens><Token key="{filters>key}" text="{filters>text}" /></tokens></MultiInput></VBox>
                         <VBox><Label text="查询开始日期" required="true" labelFor="dateFrom" />
                             <DatePicker id="dateFrom" value="{filters>/dateFrom}" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" width="100%" /></VBox>
                         <VBox><Label text="查询结束日期" required="true" labelFor="dateTo" />
@@ -18,17 +18,16 @@
                             <DatePicker id="releaseFrom" value="{filters>/releaseFrom}" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" width="100%" /></VBox>
                         <VBox><Label text="周分类基准日期" required="true" labelFor="referenceDate" />
                             <DatePicker id="referenceDate" value="{filters>/referenceDate}" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" width="100%" /></VBox>
-                        <VBox><Label text="供应商" labelFor="supplier" />
-                            <Input id="supplier" value="{filters>/supplier}" placeholder="留空表示全部" /></VBox>
+                        <VBox><Label text="供应商（多选）" labelFor="supplier" />
+                            <MultiInput id="supplier" width="100%" tokens="{filters>/suppliers}" showValueHelp="true" valueHelpRequest=".onValueHelp" change=".onSelectionInputChange" submit=".onSelectionInputChange" tokenUpdate=".onTokenUpdate" placeholder="选择或输入多个编码；留空表示全部"><tokens><Token key="{filters>key}" text="{filters>text}" /></tokens></MultiInput></VBox>
                         <VBox><layoutData><l:GridData span="XL4 L6 M6 S12" /></layoutData>
-                            <Label text="客户编码（多选）" labelFor="customers" />
-                            <Input id="customers" value="{filters>/customers}" placeholder="多个编码以逗号分隔；留空表示全部" /></VBox>
+                            <Label text="客户（多选）" labelFor="customers" />
+                            <MultiInput id="customers" width="100%" tokens="{filters>/customers}" showValueHelp="true" valueHelpRequest=".onValueHelp" change=".onSelectionInputChange" submit=".onSelectionInputChange" tokenUpdate=".onTokenUpdate" placeholder="选择或输入多个编码；留空表示全部"><tokens><Token key="{filters>key}" text="{filters>text}" /></tokens></MultiInput></VBox>
                     </l:Grid>
                     <OverflowToolbar design="Transparent">
                         <Text text="同周不同日期仍分别展示；不同单位分别合计。" />
                         <ToolbarSpacer />
-                        <Button text="应用客户 / 供应商" type="Transparent" press=".onApplyPartners" enabled="{state>/loaded}" />
-                        <Button text="查询" type="Emphasized" icon="sap-icon://search" press=".onQuery" />
+                        <Button press=".onQuery" text="查询" type="Emphasized" icon="sap-icon://search" />
                     </OverflowToolbar>
                 </Panel>
                 <MessageStrip text="本版展示原始计划，尚未扣减已收货／已发货；已发货合计仅覆盖查询日期范围。客户名称和 FS 的不限日期累计、已确定／预估指标尚未提供。"
