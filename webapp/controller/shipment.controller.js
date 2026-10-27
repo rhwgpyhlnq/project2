@@ -191,6 +191,10 @@ sap.ui.define([
                 customers: { path: "/CustomerValueHelp", key: "Customer", text: "CustomerName", field: "customers", title: "选择客户", length: 10 }
             }[input.getId().split("--").pop()];
         },
+        _selectionKey: function (config, value) {
+            const key = String(value).trim();
+            return config.length === 10 && /^\d+$/.test(key) ? key.padStart(10, "0") : key;
+        },
         _commitSelectionInput: function (input) {
             const value = input.getValue().trim();
             if (!value) { return; }
@@ -198,9 +202,9 @@ sap.ui.define([
             const codes = Array.from(new Set(value.split(/[,，;；\s]+/).filter(Boolean)));
             if (codes.some(code => code.length > config.length)) { throw new Error(config.title.slice(2) + "编码过长，请使用搜索帮助选择。"); }
             const model = this.getView().getModel("filters");
-            const selected = new Map(model.getProperty("/" + config.field).map(item => [item.key, item]));
+            const selected = new Map(model.getProperty("/" + config.field).map(item => { const key = this._selectionKey(config, item.key); return [key, Object.assign({}, item, { key: key })]; }));
             codes.forEach(code => {
-                const key = config.length === 10 && /^\d+$/.test(code) ? code.padStart(10, "0") : code;
+                const key = this._selectionKey(config, code);
                 if (!selected.has(key)) { selected.set(key, { key: key, text: key }); }
             });
             model.setProperty("/" + config.field, Array.from(selected.values()));
@@ -236,7 +240,7 @@ sap.ui.define([
                     if (config.single) { staged.clear(); }
                     e.getParameter("listItems").forEach(item => {
                         const context = item.getBindingContext();
-                        const key = context.getProperty(config.key);
+                        const key = this._selectionKey(config, context.getProperty(config.key));
                         const description = context.getProperty(config.text);
                         if (e.getParameter("selected")) { staged.set(key, { key: key, text: description ? description + " (" + key + ")" : key }); }
                         else { staged.delete(key); }
@@ -245,7 +249,7 @@ sap.ui.define([
                 updateFinished: () => {
                     table.getItems().forEach(item => {
                         const context = item.getBindingContext();
-                        if (context) { table.setSelectedItem(item, staged.has(context.getProperty(config.key))); }
+                        if (context) { table.setSelectedItem(item, staged.has(this._selectionKey(config, context.getProperty(config.key)))); }
                     });
                 }
             });

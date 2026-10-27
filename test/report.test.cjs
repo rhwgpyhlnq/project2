@@ -153,3 +153,48 @@ test("report reads send all selected values to the correct backend entity", asyn
     assert.equal(calls[1].parameters.$filter, "(Material eq 'A' or Material eq 'B') and (Partner eq '0013100001' or Partner eq '0013100002')");
     assert.ok(calls.every(call => !call.path.includes("p_material")));
 });
+
+test("search help normalizes supplier/customer keys and preserves selection on reopen", () => {
+    let controller, table;
+    class Control { constructor(settings) { this.settings = settings; } }
+    class HelpTable extends Control {
+        constructor(settings) { super(settings); table = this; this.items = []; }
+        setModel() {} bindItems() {} getItems() { return this.items; }
+        setSelectedItem(item, selected) { item.selected = selected; }
+    }
+    class Dialog extends Control { open() {} close() {} }
+    vm.runInNewContext(fs.readFileSync("webapp/controller/shipment.controller.js", "utf8"), {
+        sap: { ui: { define: (deps, factory) => {
+            controller = factory(...deps.map(name => name === "sap/ui/core/mvc/Controller" ? { extend: (_name, methods) => methods } :
+                name === "sap/m/Table" ? HelpTable : name === "sap/m/Dialog" ? Dialog : Control));
+        } } }
+    });
+    const data = { suppliers: [], customers: [], materials: [] };
+    const model = { getProperty: path => data[path.slice(1)], setProperty: (path, value) => { data[path.slice(1)] = value; } };
+    controller.getView = () => ({ getModel: () => model, addDependent: () => {} });
+    controller.getOwnerComponent = () => ({ getModel: () => ({}) });
+    for (const [id, field, raw, expected] of [["supplier", "suppliers", "1000411", "0001000411"], ["customers", "customers", "13100001", "0013100001"], ["material", "materials", "123", "123"]]) {
+        const input = { getId: () => "view--" + id, getValue: () => "" };
+        controller.onValueHelp({ getSource: () => input });
+        const config = controller._selectionConfig(input);
+        const item = { getBindingContext: () => ({ getProperty: key => key === config.key ? raw : "Test name" }) };
+        const select = selected => ({ getParameter: name => name === "listItems" ? [item] : selected });
+        table.settings.selectionChange(select(true));
+        controller._helpDialog.settings.beginButton.settings.press();
+        assert.equal(data[field][0].key, expected);
+        assert.equal(data[field][0].text, "Test name (" + expected + ")");
+        if (field === "suppliers") {
+            assert.equal(service.selectionFilter("PurchaseReport", { materials: ["PECU001"], suppliers: data[field].map(x => x.key) }), "(Material eq 'PECU001') and (Partner eq '0001000411')");
+        }
+        controller.onValueHelp({ getSource: () => input });
+        table.items = [item]; table.settings.updateFinished();
+        assert.equal(item.selected, true);
+        table.settings.selectionChange(select(true));
+        controller._helpDialog.settings.beginButton.settings.press();
+        assert.equal(data[field].length, 1);
+        table.settings.selectionChange(select(false));
+        controller._helpDialog.settings.beginButton.settings.press();
+        assert.equal(data[field].length, 0);
+    }
+    assert.equal(controller._selectionKey({ length: 10 }, " AB12 "), "AB12");
+});
